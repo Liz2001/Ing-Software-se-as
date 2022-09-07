@@ -17,7 +17,6 @@ const oauth2Client = new OAuth2(
     OAUTH_PLAYGROUND
 )
 
-// send mail
 const sendEmail = (to, url, txt) => {
     oauth2Client.setCredentials({
         refresh_token: MAILING_SERVICE_REFRESH_TOKEN
@@ -39,10 +38,10 @@ const sendEmail = (to, url, txt) => {
     const mailOptions = {
         from: SENDER_EMAIL_ADDRESS,
         to: to,
-        subject: "PW MERN SW2",
+        subject: 'Positive Signs: Activación de Cuenta',
         html: `
             <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-            <h2 style="text-align: center; text-transform: uppercase;color: teal;">Bienvenido a PW MERN SW2.</h2>
+            <h2 style="text-align: center; text-transform: uppercase;color: teal;">Bienvenido a Positive Signs,</h2>
             <p>Felicitaciones! Ya estás a punto de comenzar esta aventura!
                 Tan solo debes hacer clic en el botón de abajo para comenzar.
             </p>

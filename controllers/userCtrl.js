@@ -10,10 +10,10 @@ const userCtrl = {
         try {
             const { name, email, password } = req.body
             if (!name || !email || !password) {
-                return res.status(400).json({ msg: 'Por favor, complete los campos.' })
+                return res.status(400).json({ msg: 'Por favor, completa todos campos.' })
             }
             if (!validateEmail(email)) {
-                return res.status(400).json({ msg: 'Email inválido!' })
+                return res.status(400).json({ msg: 'Email inválido.' })
             }
             const user = await Users.findOne({ email })
             if (user) {
@@ -28,7 +28,7 @@ const userCtrl = {
             }
             const activation_token = createActivationToken(newUser)
             const url = `${CLIENT_URL}/user/activate/${activation_token}`
-            sendMail(email, url, 'Verifica tu correo.')
+            sendMail(email, url, 'Activa tu cuenta.')
             res.json({ msg: 'Registro exitoso! Por favor, activa tu cuenta para iniciar.' })
         } catch (err) {
             return res.status(500).json({ msg: err.message })
@@ -48,7 +48,8 @@ const userCtrl = {
                 name, email, password
             })
             await newUser.save()
-            res.json({ msg: 'La cuenta a sido activada exitosamente!' })
+            res.json({ msg: 'La cuenta a sido activada exitosamente.' })
+
         } catch (err) {
             return res.status(500).json({ msg: err.message })
         }
@@ -56,24 +57,23 @@ const userCtrl = {
 
     login: async (req, res) => {
         try {
-            const { email, password } = req.body
-            const user = await Users.findOne({ email })
-            if (!user) {
-                return res.status(400).json({ msg: 'Este email no existe.' })
-            }
+            const {email, password} = req.body
+            const user = await Users.findOne({email})
+            if(!user) return res.status(400).json({msg: "Este email no existe."})
+
             const isMatch = await bcrypt.compare(password, user.password)
-            if (!isMatch) {
-                return res.status(400).json({ msg: 'La contraseña es incorrecta.' })
-            }
-            const refresh_token = createRefreshToken({ id: user._id })
+            if(!isMatch) return res.status(400).json({msg: "La contraseña es incorrecta."})
+
+            const refresh_token = createRefreshToken({id: user._id})
             res.cookie('refreshtoken', refresh_token, {
                 httpOnly: true,
                 path: '/user/refresh_token',
-                maxAge: 7 * 24 * 60 * 60 * 1000 //Activo por 7 días.
+                maxAge: 7*24*60*60*1000 // 7 days
             })
-            res.json({ msg: "Has iniciado sesión." })
+
+            res.json({msg: "Login success!"})
         } catch (err) {
-            return res.status(500).json({ msg: err.message })
+            return res.status(500).json({msg: err.message})
         }
     },
 
