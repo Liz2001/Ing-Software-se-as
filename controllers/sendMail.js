@@ -42,7 +42,7 @@ const sendEmail = (to, url, txt) => {
         html: `
             <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
             <h2 style="text-align: center; text-transform: uppercase;color: teal;">Bienvenido a Positive Signs,</h2>
-            <p>Felicitaciones! Ya estás a punto de comenzar esta aventura!
+            <p>Felicitaciones! Ya estás a punto de comenzar esta nueva aventura!
                 Tan solo debes hacer clic en el botón de abajo para comenzar.
             </p>
             

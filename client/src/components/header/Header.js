@@ -11,37 +11,37 @@ function Header() {
     try {
       await axios.get('/user/logout')
       localStorage.removeItem('firstLogin')
-      window.location.href = "/";
+      window.location.href = '/';
     } catch (err) {
-      window.location.href = "/";
+      window.location.href = '/';
     }
   }
 
   const userLink = () => {
-    return <li className="drop-nav">
-      <Link to="#" className="avatar"><img src={user.avatar} alt="" />{user.name}</Link>
-      <ul className="dropdown">
-        <li><Link to="/profile">Profile</Link></li>
-        <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
+    return <li className='drop-nav'>
+      <Link to='#' className='avatar'><img src={user.avatar} alt='' />{user.name} <i className='fas fa-angle-down'></i></Link>
+      <ul className='dropdown'>
+        <li><Link to='/profile'>Perfil</Link></li>
+        <li><Link to='/' onClick={handleLogout}>Cerrar Sesión</Link></li>
       </ul>
     </li>
   }
 
   const transForm = {
-    transform: isLogged ? "translateY(-5px)" : 0
+    transform: isLogged ? 'translateY(-5px)' : 0
   }
 
   return (
     <header>
-      <div className="logo">
-        <h1><Link to="/">Positive Signs</Link></h1>
+      <div className='logo'>
+        <h1><Link to='/'>Positive Signs</Link></h1>
       </div>
       <ul style={transForm}>
-        <li><Link to="/"> Donaciones</Link></li>
+        <li><Link to='/'><i className="fa-solid fa-hand-holding-dollar"></i> Donaciones</Link></li>
         {
           isLogged
             ? userLink()
-            : <li><Link to="/login"> Iniciar Sesión</Link></li>
+            : <li><Link to='/login'><i className="fa-solid fa-user"></i> Iniciar Sesión</Link></li>
         }
       </ul>
     </header>

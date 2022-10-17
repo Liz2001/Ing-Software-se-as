@@ -23,7 +23,7 @@ function ActivationEmail() {
   }, [activation_token])
 
   return (
-    <div className="active_page">
+    <div className='active_page'>
       {err && showErrMsg(err)}
       {success && showSuccessMsg(success)}
     </div>

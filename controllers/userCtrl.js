@@ -57,32 +57,37 @@ const userCtrl = {
 
     login: async (req, res) => {
         try {
-            const {email, password} = req.body
-            const user = await Users.findOne({email})
-            if(!user) return res.status(400).json({msg: "Este email no existe."})
-
+            const { email, password } = req.body
+            const user = await Users.findOne({ email })
+            if (!user) {
+                return res.status(400).json({ msg: "Este email no existe." })
+            }
             const isMatch = await bcrypt.compare(password, user.password)
-            if(!isMatch) return res.status(400).json({msg: "La contraseña es incorrecta."})
-
-            const refresh_token = createRefreshToken({id: user._id})
+            if (!isMatch) {
+                return res.status(400).json({ msg: "La contraseña es incorrecta." })
+            }
+            const refresh_token = createRefreshToken({ id: user._id })
             res.cookie('refreshtoken', refresh_token, {
                 httpOnly: true,
                 path: '/user/refresh_token',
-                maxAge: 7*24*60*60*1000 // 7 days
+                maxAge: 7 * 24 * 60 * 60 * 1000
             })
-
-            res.json({msg: "Login success!"})
+            res.json({ msg: "Login success!" })
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.status(500).json({ msg: err.message })
         }
     },
 
     getAccessToken: (req, res) => {
         try {
             const rf_token = req.cookies.refreshtoken
-            if (!rf_token) return res.status(400).json({ msg: 'Por favor, vuelve a acceder.' })
+            if (!rf_token) {
+                return res.status(400).json({ msg: 'Por favor, vuelve a acceder.' })
+            }
             jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-                if (err) return res.status(400).json({ msg: 'Por favor, vuelve a acceder.' })
+                if (err) {
+                    return res.status(400).json({ msg: 'Por favor, vuelve a acceder.' })
+                }
                 const access_token = createAccessToken({ id: user.id })
                 res.json({ access_token })
             })
@@ -111,7 +116,6 @@ const userCtrl = {
         try {
             const { password } = req.body
             const passwordHash = await bcrypt.hash(password, 12)
-            console.log(req.user)
             await Users.findOneAndUpdate({ _id: req.user.id }, {
                 password: passwordHash
             })

@@ -1,6 +1,6 @@
 header {
   width: 100%;
-  min-height: 100%;
+  min-height: 75px;
   background: #282c34;
   display: flex;
   justify-content: space-between;
@@ -23,4 +23,38 @@ header ul li {
 
 header ul li:hover {
   opacity: 1;
+}
+
+header ul li img {
+  width: 30px;
+  height: 30px;
+  transform: translateY(10px);
+  border-radius: 50%;
+}
+
+.drop-nav {
+  position: relative;
+  padding: 10px 0;
+}
+
+.drop-nav a {
+  text-transform: capitalize;
+  overflow: hidden;
+}
+
+.drop-nav .dropdown {
+  position: absolute;
+  background: #282c34;
+  width: 100%;
+  width: calc(100% + 30px);
+  top: 50px;
+  display: none;
+}
+
+.drop-nav .dropdown li {
+  display: block;
+}
+
+.drop-nav:hover .dropdown {
+  display: block;
 }
