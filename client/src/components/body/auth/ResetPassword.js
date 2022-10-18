@@ -48,7 +48,7 @@ function ResetPassword() {
         <input type='password' name='password' id='password' value={password} onChange={handleChangeInput}></input>
         <label htmlFor='cf_password'>Confirma tu nueva contraseña</label>
         <input type='password' name='cf_password' id='cf_password' value={cf_password} onChange={handleChangeInput}></input>
-        <button onClick={handleResetPassword}>Guardar</button>
+        <button onClick={handleResetPassword}>Reestablecer contraseña</button>
       </div>
     </div>
   )

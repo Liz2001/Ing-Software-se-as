@@ -3,7 +3,7 @@ import React from 'react';
 function Missing() {
   return (
     <div>
-      <p>404 | Página No Encontrada</p>
+      404 | Página No Encontrada
     </div>
   )
 }
