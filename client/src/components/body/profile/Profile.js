@@ -71,7 +71,7 @@ function Profile() {
   }
 
   const handleChangeAvatar = async (event) => {
-    event.prevetDefault()
+    event.preventDefault()
     try {
       const file = event.target.files[0]
       if (!file) {
@@ -190,7 +190,7 @@ function Profile() {
                       </td>
                       <td>
                         <Link to={`/edit_user/${user._id}`}><i className='fa-solid fa-pen-to-square' title='Editar'></i></Link>
-                        <button class='btn' onClick={() => handleDelete(user._id)}><i className='fa-solid fa-trash' title='Eliminar'></i></button>
+                        <button className='btn' onClick={() => handleDelete(user._id)}><i className='fa-solid fa-trash' title='Eliminar'></i></button>
                       </td>
                     </tr>
                   ))
