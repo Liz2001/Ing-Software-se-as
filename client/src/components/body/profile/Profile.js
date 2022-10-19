@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { isLength, isMatch } from '../../utils/validation/Validation';
 import { showSuccessMsg, showErrMsg } from '../../utils/notification/Notification';
-import { fetchAllUsers, dispatchGetAllUsers } from '../../../redux/actions/userAction';
+import { fetchAllUsers, dispatchGetAllUsers } from '../../../redux/actions/usersAction';
 
 const initialState = {
   name: '',
@@ -105,6 +105,23 @@ function Profile() {
     }
   }
 
+  const handleDelete = async (id) => {
+    try {
+      if (user._id !== id) {
+        if (window.confirm('¿Está Seguro de Eliminar?')) {
+          setLoading(true)
+          await axios.delete(`/user/delete/${id}`, {
+            headers: { Authorization: token }
+          })
+          setLoading(false)
+          setCallback(!callback)
+        }
+      }
+    } catch (err) {
+      setData({ ...data, err: err.response.data.msg, success: '' })
+    }
+  }
+
   return (
     <>
       <div>
@@ -118,7 +135,7 @@ function Profile() {
           <div className='avatar'>
             <img src={avatar ? avatar : user.avatar} alt=''></img>
             <span>
-              <i className='fas fa-camera'></i>
+              <i className='fa-solid fa-camera'></i>
               <p>Cambiar</p>
               <input type='file' name='file' id='file_upload' onChange={handleChangeAvatar}></input>
             </span>
@@ -149,33 +166,34 @@ function Profile() {
         <div className='col-right'>
           <h2>{isAdmin ? 'Alumnos' : 'Estadísticas'}</h2>
           <div style={{ overflowX: 'auto' }}>
-            <table className='quiz'>
+            <table className='data_table'>
               <thead>
                 <tr>
-                  <th>Módulo</th>
-                  <th>Pregunta</th>
-                  <th>Respuesta</th>
+                  <th>Usuario</th>
+                  <th>Correo</th>
+                  <th>Credenciales</th>
+                  <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                  users.map(user => {
+                  users.map(user => (
                     <tr key={user._id}>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>
                         {
                           user.role === 1
-                            ? <i className='fas fa-check' title='Docente'></i>
-                            : <i className='fas fa-times' title='Alumno'></i>
+                            ? <i className='fa-solid fa-chalkboard-user' title='Docente'></i>
+                            : <i className='fa-solid fa-graduation-cap' title='Alumno'></i>
                         }
                       </td>
                       <td>
-                        <Link to={`/edit_user/${user._id}`}><i className='fas fa-edit' title='Editar'></i></Link>
-                        <Link to={`/edit_user/${user._id}`}><i className='fas fa-trash-alt' title='Eliminar'></i></Link>
+                        <Link to={`/edit_user/${user._id}`}><i className='fa-solid fa-pen-to-square' title='Editar'></i></Link>
+                        <button class='btn' onClick={() => handleDelete(user._id)}><i className='fa-solid fa-trash' title='Eliminar'></i></button>
                       </td>
                     </tr>
-                  })
+                  ))
                 }
               </tbody>
             </table>

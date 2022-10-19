@@ -17,13 +17,13 @@ function Body() {
   return (
     <section>
       <Routes>
-        <Route path='/login' element={isLogged ? <Missing /> : <Login />} exact />
-        <Route path='/register' element={isLogged ? <Missing /> : <Register />} exact />
-        <Route path='/forgot_password' element={isLogged ? <Missing /> : <ForgotPassword />} exact />
-        <Route path='/user/reset/:token' element={isLogged ? <Missing /> : <ResetPassword />} exact />
-        <Route path='/user/activate/:activation_token' element={<ActivationEmail />} exact />
-        <Route path='/profile' element={isLogged ? <Profile /> : <Missing />} exact />
-        <Route path='/edit_user/:id' element={isAdmin ? <EditUser /> : <Missing />} exact />
+        <Route path='/login' element={isLogged ? <Missing /> : <Login />} />
+        <Route path='/register' element={isLogged ? <Missing /> : <Register />} />
+        <Route path='/forgot_password' element={isLogged ? <Missing /> : <ForgotPassword />} />
+        <Route path='/user/reset/:token' element={isLogged ? <Missing /> : <ResetPassword />} />
+        <Route path='/user/activate/:activation_token' element={<ActivationEmail />} />
+        <Route path='/profile' element={isLogged ? <Profile /> : <Missing />} />
+        <Route path='/edit_user/:id' element={isAdmin ? <EditUser /> : <Missing />} />
       </Routes>
     </section>
   )

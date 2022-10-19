@@ -11,9 +11,6 @@ export const fetchAllUsers = async (token) => {
 export const dispatchGetAllUsers = (res) => {
   return {
     type: ACTIONS.GET_ALL_USERS,
-    payload: {
-      user: res.data,
-      isAdmin: res.data
-    }
+    payload: res.data
   }
 }

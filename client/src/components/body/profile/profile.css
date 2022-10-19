@@ -102,53 +102,72 @@
   margin: 10px 0;
 }
 
-.quiz {
+.data_table {
   border-collapse: collapse;
   width: 100%
 }
 
-.quiz td,
+.data_table td,
 
-.quiz th {
+.data_table th {
   border: 1px solid #ddd;
   padding: 8px;
   min-width: 100px;
 }
 
-.quiz tr:nth-child(even) {
+.data_table tr:nth-child(even) {
   background: f2f2f2;
 }
 
-.quiz th {
+.data_table th {
   padding-top: 12px;
   text-align: left;
   background: #555;
   color: white;
 }
 
-.quiz i {
-  curso: pointer;
+.data_table i {
+  cursor: pointer;
 }
 
-.quiz .fa-check {
-  color: green;
-}
-
-.quiz .fa-times {
-  color: red;
-}
-
-.quiz .fa-edit {
-  background: whitesmoke;
+.data_table .fa-pen-to-square {
   padding: 7px;
-  color: #555;
-  font-size: 10px;
+  font-size: 15px;
 }
 
-.quiz .fa-trash-alt {
-  background: red;
+.data_table .fa-trash {
   padding: 7px;
-  color: white;
-  font-size: 10px;
+  font-size: 15px;
   margin-left: 7px;
+}
+
+.data_table .btn {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.edit_user .go_back {
+  background: white;
+  margin: 20px;
+  font-size: 1rem;
+}
+
+.edit_user .col-left {
+  margin-top: 50px;
+}
+
+.edit_user .col-left input {
+  background: #eee;
+}
+
+.edit_user .col-left #isAdmin {
+  width: 20px;
+  height: 20xp;
+  transform: translateY(3px);
+  margin: 10px 0;
+}
+
+.edit_user .col-left #isAdmin+label {
+  display: inline-block;
+  margin-left: 5px;
 }
