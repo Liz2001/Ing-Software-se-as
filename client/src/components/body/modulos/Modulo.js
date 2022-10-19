@@ -36,18 +36,29 @@ const tasks = [
         completado: false
     }
   ]
+  let cont = 0
+function CrearModelo(){
+    if(cont == 0){
+        
+    }
+}
   let Objetos = []
+  let contador = 0;
 function CrearClases(){
-    tasks.map((task) => {
-        let temp = new Modulos(task.id,task.titulo,task.text,task.disponible,task.completado)
-        Objetos.push(temp)
-    })
+    if( contador == 0){
+        tasks.map((task) => {
+            let temp = new Modulos(task.id,task.text,task.cuerpo,task.disponible,task.completado)
+            Objetos.push(temp)
+        })
+        contador++  
+    }
 }  
 function Modulo() {
+     CrearClases()
   return (
     <div class="row">
-       {tasks.map((task) => (       
-       <Card key = {task.id} id= {task.id} titulo={task.text} cuerpo ={task.cuerpo} disponible = {task.disponible} completado = {task.completado} />
+       {Objetos.map((task) => (       
+       <Card key = {task.id} id= {task.id} titulo={task.titulo} cuerpo ={task.texto} disponible = {task.disponible} completado = {task.completado} />
        )
        )}
     </div>

@@ -21,3 +21,4 @@ const ModuleSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('Modulos', ModuleSchema)
+
