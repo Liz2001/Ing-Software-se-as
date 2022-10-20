@@ -136,10 +136,7 @@ function Profile() {
           <div className='avatar'>
             <img src={avatar ? avatar : user.avatar} alt=''></img>
             <span>
-<<<<<<< HEAD
-=======
-              <i className='fa-solid fa-camera'></i>
->>>>>>> 4d7129a33516904aea7f7e68db3b523cad06be0a
+             
               <p>Cambiar</p>
               <input type='file' name='file' id='file_upload' onChange={handleChangeAvatar}></input>
             </span>
@@ -181,36 +178,16 @@ function Profile() {
               </thead>
               <tbody>
                 {
-<<<<<<< HEAD
-                 // lusuarios.map((user) => (
-                 //  <tr key={user._id}>
-                 //    <td>{user.name}</td>
-                 //    <td>{user.email}</td>
-                 //    <td>
-                 //      <Link to={`/edit_user/${user._id}`}></Link>
-                 //      <Link to={`/edit_user/${user._id}`}></Link>
-                 //    </td>
-                 //  </tr>
-                 //))
-=======
                   users.map(user => (
                     <tr key={user._id}>
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>
-                        {
-                          user.role === 1
-                            ? <i className='fa-solid fa-chalkboard-user' title='Docente'></i>
-                            : <i className='fa-solid fa-graduation-cap' title='Alumno'></i>
-                        }
-                      </td>
-                      <td>
-                        <Link to={`/edit_user/${user._id}`}><i className='fa-solid fa-pen-to-square' title='Editar'></i></Link>
-                        <button className='btn' onClick={() => handleDelete(user._id)}><i className='fa-solid fa-trash' title='Eliminar'></i></button>
+                        <Link to={`/edit_user/${user._id}`}></Link>
+                        <button className='btn' onClick={() => handleDelete(user._id)}></button>
                       </td>
                     </tr>
                   ))
->>>>>>> 4d7129a33516904aea7f7e68db3b523cad06be0a
                 }
               </tbody>
             </table>

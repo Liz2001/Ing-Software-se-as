@@ -1,5 +1,7 @@
 import React from 'react'
 import Card from './components/Card'
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 class Modulos{
     constructor(id, titulo,texto,disponible,completado)
@@ -12,43 +14,38 @@ class Modulos{
     }
 }
 
-const tasks = [
-    {
-        id: 1,
-        text: 'Principiante',
-        cuerpo: 'En este curso aprenderas a blablabla',
-        disponible: true,
-        completado: false
-  
-    },
-    {
-        id:2,
-        text : 'Intermedio',
-        cuerpo: 'En este curso aprenderas a blablabla',
-        disponible: false,
-        completado: false
-    },
-    {
-        id: 3,
-        titulo: 'Avanzado',
-        texto: 'En este curso aprenderas a blablabla',
-        disponible: false,
-        completado: false
+
+
+
+function Modulo() {
+    const [todos, setTodos] = useState([]);
+    const getTodos = async () => {
+    try {
+        const response = await fetch("/module/all_infor");
+        const jsonData = await response.json();
+        setTodos(jsonData)
+    } catch (err) {
+      console.error(err.message);
     }
-  ]
+  };
+
+  useEffect(() => {
+    getTodos();
+  }, []);
+  
   let Objetos = []
   let contador = 0;
 function CrearClases(){
-    if( contador == 0){
-        tasks.map((task) => {
-            let temp = new Modulos(task.id,task.text,task.cuerpo,task.disponible,task.completado)
+    if( contador === 0){
+        todos.map((task) => {
+            let temp = new Modulos(task.id,task.title,task.description,task.avaliable,task.completed)
             Objetos.push(temp)
         })
         contador++  
     }
 }  
-function Modulo() {
-     CrearClases()
+    console.log(todos)
+  CrearClases()
   return (
     <div class="row">
        {Objetos.map((task) => (       
