@@ -30,18 +30,12 @@ const tasks = [
     },
     {
         id: 3,
-        text : 'Avanzado',
-        cuerpo: 'En este curso aprenderas a blablabla',
+        titulo: 'Avanzado',
+        texto: 'En este curso aprenderas a blablabla',
         disponible: false,
         completado: false
     }
   ]
-  let cont = 0
-function CrearModelo(){
-    if(cont == 0){
-        
-    }
-}
   let Objetos = []
   let contador = 0;
 function CrearClases(){

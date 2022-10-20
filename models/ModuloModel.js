@@ -1,24 +1,27 @@
 const mongoose = require('mongoose')
 
-const ModuleSchema = new mongoose.Schema({
-    id:{
-        type: Int32Array,
-    },
-    Titulo: {
-        type: String,
-    },
-    Texto: {
-        type: Array,
-    },
-    Disponible:{
-        type: Boolean
-    },
-    Completado:{
-        type: Boolean
-    }
+const moduleSchema = new mongoose.Schema({
+  id: {
+    type: String
+  },
+
+  title: {
+    type: String
+  },
+
+  description: {
+    type: String
+  },
+
+  avaliable: {
+    type: Boolean
+  },
+
+  completed: {
+    type: Boolean
+  }
 }, {
-    timestamps: true
+  timestamps: true
 })
 
-module.exports = mongoose.model('Modulos', ModuleSchema)
-
+module.exports = mongoose.model('Module', moduleSchema)
