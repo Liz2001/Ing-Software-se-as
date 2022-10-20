@@ -15,6 +15,8 @@ app.use(fileUpload({
 }))
 
 app.use('/user', require('./routes/userRoutes'))
+app.use('/question', require('./routes/questionRoutes'))
+app.use('/module', require('./routes/moduleRoutes'))
 app.use('/api', require('./routes/upload'))
 
 const URI = process.env.MONGODB_URL

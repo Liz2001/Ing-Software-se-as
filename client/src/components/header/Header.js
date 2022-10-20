@@ -19,7 +19,11 @@ function Header() {
 
   const userLink = () => {
     return <li className='drop-nav'>
+<<<<<<< HEAD
       <Link to='#' className='avatar'><img src={user.avatar} alt='' />{user.name} </Link>
+=======
+      <Link to='#' className='avatar'><img src={user.avatar}/> {user.name}</Link>
+>>>>>>> 4d7129a33516904aea7f7e68db3b523cad06be0a
       <ul className='dropdown'>
         <li><Link to='/profile'>Perfil</Link></li>
         <li><Link to='/' onClick={handleLogout}>Cerrar Sesión</Link></li>
@@ -37,11 +41,19 @@ function Header() {
         <h1><Link to='/'>Positive Signs</Link></h1>
       </div>
       <ul style={transForm}>
+<<<<<<< HEAD
         <li><Link to='/'> Donaciones</Link></li>
         {
           isLogged
             ? userLink()
             : <li><Link to='/login'> Iniciar Sesión</Link></li>
+=======
+        <li><Link to='/'><i className='fa-solid fa-hand-holding-dollar'></i> Donaciones</Link></li>
+        {
+          isLogged
+            ? userLink()
+            : <li><Link to='/login'><i className='fa-solid fa-user'></i> Iniciar Sesión</Link></li>
+>>>>>>> 4d7129a33516904aea7f7e68db3b523cad06be0a
         }
       </ul>
     </header>
