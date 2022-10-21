@@ -18,6 +18,7 @@ function Profile() {
   const auth = useSelector(state => state.auth)
   const token = useSelector(state => state.token)
   const users = useSelector(state => state.users)
+  const lusuarios = users
   const { user, isAdmin } = auth
   const [data, setData] = useState(initialState)
   const { name, password, cf_password, err, success } = data
@@ -135,7 +136,7 @@ function Profile() {
           <div className='avatar'>
             <img src={avatar ? avatar : user.avatar} alt=''></img>
             <span>
-              <i className='fa-solid fa-camera'></i>
+             
               <p>Cambiar</p>
               <input type='file' name='file' id='file_upload' onChange={handleChangeAvatar}></input>
             </span>
@@ -182,15 +183,8 @@ function Profile() {
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>
-                        {
-                          user.role === 1
-                            ? <i className='fa-solid fa-chalkboard-user' title='Docente'></i>
-                            : <i className='fa-solid fa-graduation-cap' title='Alumno'></i>
-                        }
-                      </td>
-                      <td>
-                        <Link to={`/edit_user/${user._id}`}><i className='fa-solid fa-pen-to-square' title='Editar'></i></Link>
-                        <button className='btn' onClick={() => handleDelete(user._id)}><i className='fa-solid fa-trash' title='Eliminar'></i></button>
+                        <Link to={`/edit_user/${user._id}`}></Link>
+                        <button className='btn' onClick={() => handleDelete(user._id)}></button>
                       </td>
                     </tr>
                   ))

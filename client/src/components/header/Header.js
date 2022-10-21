@@ -37,11 +37,11 @@ function Header() {
         <h1><Link to='/'>Positive Signs</Link></h1>
       </div>
       <ul style={transForm}>
-        <li><Link to='/'><i className='fa-solid fa-hand-holding-dollar'></i> Donaciones</Link></li>
+        <li><Link to='/'> Donaciones</Link></li>
         {
           isLogged
             ? userLink()
-            : <li><Link to='/login'><i className='fa-solid fa-user'></i> Iniciar Sesión</Link></li>
+            : <li><Link to='/login'>Iniciar Sesión</Link></li>
         }
       </ul>
     </header>

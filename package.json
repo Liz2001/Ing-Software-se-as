@@ -25,6 +25,7 @@
     "googleapis": "^107.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.5",
+    "node": "^19.0.0",
     "node-fetch": "^3.2.10",
     "nodemailer": "^6.8.0",
     "react-bootstrap": "^2.5.0",
