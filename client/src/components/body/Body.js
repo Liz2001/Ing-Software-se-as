@@ -29,7 +29,8 @@ function Body() {
         <Route path='/edit_user/:id' element={isAdmin ? <EditUser /> : <Missing />} />
         <Route path='/' element={isLogged ? <Modulo /> : <></>} exact />
         <Route path='/test' element={isLogged ? <Test /> : <Missing />} />
-        <Route path='/modulo/:id' element={isLogged ?  <Cuestionario />: <Missing />} />
+        <Route path='/modulo/:id' element={isLogged ? <Cuestionario /> : <Missing />} />
+        
       </Routes>
     </section>
   )
