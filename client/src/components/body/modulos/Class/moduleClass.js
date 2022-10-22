@@ -6,6 +6,21 @@ export default class Modulos{
         this.texto = texto;
         this.disponible = disponible;
         this.completado = completado
+    }
+    getId(){
+        return this.id
+    }    
+    getTitulo(){
+       return this.titulo
+    }
+    getTexto(){
+       return this.texto
+    }
+    getDisponible(){
+       return this.disponible
+    }
+    getCompletado(){
+       return this.completado
     }    
 }
 

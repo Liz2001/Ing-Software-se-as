@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 
 function Card({titulo,cuerpo,disponible, completado,id}) {
     const noMostrar = () =>{
-        console.log('no disponible')
-        
+        console.log('no disponible')        
     }
   return (
     <div className="col-4">

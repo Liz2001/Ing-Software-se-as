@@ -3,10 +3,9 @@ import Card from './components/Card'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const AbstractFactory = require('./Class/AbstractFactory')
-
+const MainFactoria = require('./MainFactoria')
 function Modulo() {
-  const factoria = new AbstractFactory.default()
+    const factoria = MainFactoria.default
     const [todos, setTodos] = useState([]);
     const getTodos = async () => {
     try {
@@ -38,7 +37,7 @@ function CrearClases(){
   return (
     <div class="row">
        {Objetos.map((task) => ( //Lo recorro y lo pinto.      
-       <Card key = {task.id} id= {task.id} titulo={task.titulo} cuerpo ={task.texto} disponible = {task.disponible} completado = {task.completado} /> 
+       <Card key = {task.id} id= {task.getId()} titulo={task.getTitulo()} cuerpo ={task.getTexto()} disponible = {task.getDisponible()} completado = {task.getCompletado()} /> 
        )
        )}
     </div>

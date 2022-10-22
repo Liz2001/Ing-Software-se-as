@@ -4,4 +4,13 @@ export default class Pregunta{
         this.answer = answer
         this.respuestainc = respuestainc
     }    
+    getQuestion(){
+        return this.question
+    }
+    getAnswer(){
+        return this.answer
+    }
+    getRespuestaInc(){
+        return this.respuestainc
+    }
 }

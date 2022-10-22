@@ -4,26 +4,25 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { redirect, useParams } from 'react-router-dom'
 import Video from './components/Video';
+import factoria from './MainFactoria';
 
-
-const AbstractFactory = require('./Class/AbstractFactory')
 const Cuestionario = () => {
-const factoria = new AbstractFactory.default()
-  let{id} = useParams()
 
+    let{id} = useParams()
     const [todos, setTodos] = useState([]);
-    const [preguntActual,setPreguntaActual] = useState(0)
-    const [puntuacion,setPuntuacion] = useState(0)
-    const [isfinished,setFinished] = useState(false);
-    const getTodos = async () => {
+
+  const getTodos = async () => {
+
     try {
+      if(id === "1"){
         const response = await fetch("/question/all_infor");
         const jsonData = await response.json();
         setTodos(jsonData)
+      }
     } catch (err) {
       console.error(err.message);
     }
-  };
+  }; // getTodos(BASE DE DATOS -->) SET TODOS(ALMACENA LOS OBJETOS QUE ME HAN DADO) --> CREAR CLASES(TODOS LOS OBJETOS LO TRANSFORMO) --> RANDOMIZAR(ELIGE UN OBJETO) --> PINTA TODO
 
   useEffect(() => {
     getTodos();
@@ -73,18 +72,18 @@ const factoria = new AbstractFactory.default()
       return(
         <table>
         <th>
-          <Video  pregunta={element.question}/>
+          <Video  pregunta={element.getQuestion()}/>
         </th>
         <tr>
            <h1>¿Cual es el gesto que se ve en el video?</h1>
         </tr>
         <tr>
-            <button className='btn btn-primary' onClick={Correcto}>{element.answer}</button>
-            <button className='btn btn-primary' onClick={Incorrecto}>{element.respuestainc[0] }</button>  
+            <button className='btn btn-primary' onClick={Correcto}>{element.getAnswer()}</button>
+            <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[0] }</button>  
         </tr>
         <tr>
-            <button className='btn btn-primary' onClick={Incorrecto}>{element.respuestainc[1]}</button>
-            <button className='btn btn-primary' onClick={Incorrecto}>{element.respuestainc[2]}</button>
+            <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[1]}</button>
+            <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[2]}</button>
         </tr>
         </table>      
         )
