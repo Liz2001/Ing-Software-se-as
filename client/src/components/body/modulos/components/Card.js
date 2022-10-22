@@ -1,14 +1,10 @@
 import React from 'react'
 import Button from './Button'
 import { Link } from 'react-router-dom'
-import Test from '../../test/Test'
 
 
 
 function Card({titulo,cuerpo,disponible, completado,id}) {
-    const redireccionar = () => {
-      
-    }
     const noMostrar = () =>{
         console.log('no disponible')
         

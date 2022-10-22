@@ -2,7 +2,8 @@ import React from 'react'
 import Button from './components/Button'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import { redirect, useParams } from 'react-router-dom'
+import Video from './components/Video';
 
 
 const AbstractFactory = require('./Class/AbstractFactory')
@@ -28,7 +29,7 @@ const factoria = new AbstractFactory.default()
     getTodos();
   }, []);
 
-
+  let Preguntas =[]
   let contador = 0
   function CrearClases(){
     if( contador === 0){
@@ -41,10 +42,6 @@ const factoria = new AbstractFactory.default()
     }
   } 
 
-  let pregunt= "https://www.signingsavvy.com/media2/mp4-ld/26/26724.mp4"
-  let correct = []
-  let incorrect = []  
-  let Preguntas =[]
   let preg_esc = []
   let contadorpreg=0
 
@@ -52,38 +49,48 @@ const factoria = new AbstractFactory.default()
     if(Preguntas.length > 0){
       if(contadorpreg === 0){
         let random = Math.floor(Math.random() * Preguntas.length)
-        preg_esc=Preguntas[random]
-        pregunt = preg_esc.question
-        correct = preg_esc.answer
-        incorrect = preg_esc.respuestainc
-        contadorpreg++;
+        preg_esc.push(Preguntas[random])
       }
-      console.log(contadorpreg)
     }
   }
+
+  function Correcto(){
+    alert("Correcto");
+    window.location.replace("http://localhost:3000/");
+  }
+  function Incorrecto(){
+    alert("Incorrecto")
+    window.location.replace(`http://localhost:3000/modulo/${id}`)
+  }
+
   CrearClases()
   
+
   return (
 
-   <div>
-        {pregunt}
-       <th>
-       <video controls width="100%">
-       <source src={pregunt} type="video/mp4" />
-       Sorry, your browser doesn't support embedded videos.
-       </video>
-     </th>
-    
-       <tr>
-        <button className='btn btn-primary'>{correct[0]}</button>
-        <button className='btn btn-primary'>{incorrect[0]}</button>
-        
-       </tr>
-       <tr>
-        <button className='btn btn-primary'>{incorrect[1]}</button>
-        <button className='btn btn-primary'>{incorrect[2]}</button>
-       </tr>
-    </div>
+   <div>{
+    preg_esc.map(element => {
+      return(
+        <table>
+        <th>
+          <Video  pregunta={element.question}/>
+        </th>
+        <tr>
+           <h1>¿Cual es el gesto que se ve en el video?</h1>
+        </tr>
+        <tr>
+            <button className='btn btn-primary' onClick={Correcto}>{element.answer}</button>
+            <button className='btn btn-primary' onClick={Incorrecto}>{element.respuestainc[0] }</button>  
+        </tr>
+        <tr>
+            <button className='btn btn-primary' onClick={Incorrecto}>{element.respuestainc[1]}</button>
+            <button className='btn btn-primary' onClick={Incorrecto}>{element.respuestainc[2]}</button>
+        </tr>
+        </table>      
+        )
+    })     
+   }
+   </div>   
   )
 }
 
