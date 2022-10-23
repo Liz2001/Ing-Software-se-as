@@ -1,31 +1,32 @@
+
 import React from 'react'
-import Button from './components/Button'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { redirect, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Video from './components/Video';
 import factoria from './MainFactoria';
 
 const Cuestionario = () => {
-
-    let{id} = useParams()
-    const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([]);
+  let{id} = useParams()
+  let _id = parseInt(id)
+  let preg_esc = []
+  let contadorpreg=0
 
   const getTodos = async () => {
 
     try {
-      if(id === "1"){
         const response = await fetch("/question/all_infor");
         const jsonData = await response.json();
         setTodos(jsonData)
-      }
     } catch (err) {
       console.error(err.message);
     }
   }; // getTodos(BASE DE DATOS -->) SET TODOS(ALMACENA LOS OBJETOS QUE ME HAN DADO) --> CREAR CLASES(TODOS LOS OBJETOS LO TRANSFORMO) --> RANDOMIZAR(ELIGE UN OBJETO) --> PINTA TODO
 
   useEffect(() => {
-    getTodos();
+   getTodos();
+
   }, []);
 
   let Preguntas =[]
@@ -33,16 +34,14 @@ const Cuestionario = () => {
   function CrearClases(){
     if( contador === 0){
         todos.map((task) => {
-           let temp = factoria.obtenerPregunta().crearPregunta(task.question,task.correct,task.incorrect)
+           let temp = factoria.obtenerPregunta().crearPregunta(task.module,task.question,task.correct,task.incorrect)
            Preguntas.push(temp)
+           console.log(Preguntas)
         })
         contador++
         Randomizar()
     }
   } 
-
-  let preg_esc = []
-  let contadorpreg=0
 
   function Randomizar(){
     if(Preguntas.length > 0){
@@ -52,18 +51,39 @@ const Cuestionario = () => {
       }
     }
   }
+  const updateStatus = async (id, avaliable, completed) => {
+    try {
+      const res = await fetch(`http://127.0.0.1:5000/module//update/${id}/${avaliable}/${completed}`, {
+        method : 'PATCH',
+        body: JSON.stringify({
+          avaliable: avaliable,
+          completed: completed
+        })
+      })
+    } catch (err) {
+      console.error(err.message)
+    }
+  }
 
+  function Updatear(){
+    updateStatus(id.toString(), 'true', 'true')
+    if(_id < 3){
+      updateStatus((_id+1).toString(),'true','false')
+    }else{
+      updateStatus(id.toString(),'true','true')
+    }
+  }
   function Correcto(){
+    Updatear()
     alert("Correcto");
-    window.location.replace("http://localhost:3000/");
+    window.location.replace(`/`)
   }
   function Incorrecto(){
     alert("Incorrecto")
     window.location.replace(`http://localhost:3000/modulo/${id}`)
   }
 
-  CrearClases()
-  
+  CrearClases();
 
   return (
 

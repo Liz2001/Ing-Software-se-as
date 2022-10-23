@@ -21,6 +21,15 @@ const questionCtrl = {
         return res.status(500).json({ msg: err.message })
     }
 },
+getQuestionSingleInfor: async (req, res) => {
+  try {
+    const { module: module, number: number } = req.params
+    const modules = await Question.findOne({ module: module, number: number })
+    res.json(modules)
+  } catch (err) {
+    return res.status(500).json({ msg: err.message })
+  }
+}
 }
 
 module.exports = questionCtrl
