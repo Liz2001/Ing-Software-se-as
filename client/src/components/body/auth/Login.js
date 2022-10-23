@@ -39,7 +39,7 @@ function Login() {
 
   return (
     <div className='container'>
-      <Link to={'/login'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
+      <Link to={'/'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
       <div className='login_page'>
         <h2>Iniciar Sesión</h2>
         {err && showErrMsg(err)}

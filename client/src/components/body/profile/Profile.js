@@ -124,87 +124,85 @@ function Profile() {
   }
 
   return (
-    <>
-      <div className='container'>
-        <Link to={'/'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
-        <div>
-          {err && showErrMsg(err)}
-          {success && showSuccessMsg(success)}
-          {loading && <h3>Cargando...</h3>}
-        </div>
-        <div className='profile_page'>
-          <div className='col-left'>
-            <h2>{isAdmin ? 'Perfil de Administrador' : 'Perfil de Usuario'}</h2>
-            <div className='avatar'>
-              <img src={avatar ? avatar : user.avatar} alt=''></img>
-              <span>
-                <FontAwesomeIcon icon='fa-solid fa-camera' />
-                <p>Cambiar</p>
-                <input type='file' name='file' id='file_upload' onChange={handleChangeAvatar}></input>
-              </span>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='name'>Usuario</label>
-              <input type='text' name='name' id='name' defaultValue={user.name} placeholder='Usuario' onChange={handleChange}></input>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='email'>Correo</label>
-              <input type='email' name='email' id='email' defaultValue={user.email} placeholder='Correo' disabled></input>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='password'>Nueva Contraseña</label>
-              <input type='password' name='password' id='password' placeholder='Ingresa tu contraseña' value={password} onChange={handleChange}></input>
-            </div>
-            <div className='form-group'>
-              <label htmlFor='cf_password'>Confirmar Nueva Contraseña</label>
-              <input type='password' name='cf_password' id='cf_password' placeholder='Confirma tu contraseña' value={cf_password} onChange={handleChange}></input>
-            </div>
-            <div>
-              <em style={{ color: 'crimson' }}>
-                * Si actualizas tu contraseña desde tu perfil de usuario, no podrás loguearte rápidamente por Google o Facebook.
-              </em>
-            </div>
-            <button disabled={loading} onClick={handleUpdate}>Actualizar datos</button>
+    <div className='container'>
+      <Link to={'/'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
+      <div>
+        {err && showErrMsg(err)}
+        {success && showSuccessMsg(success)}
+        {loading && <h3>Cargando...</h3>}
+      </div>
+      <div className='profile_page'>
+        <div className='col-left'>
+          <h2>{isAdmin ? 'Perfil de Administrador' : 'Perfil de Usuario'}</h2>
+          <div className='avatar'>
+            <img src={avatar ? avatar : user.avatar} alt=''></img>
+            <span>
+              <FontAwesomeIcon icon='fa-solid fa-camera' />
+              <p>Cambiar</p>
+              <input type='file' name='file' id='file_upload' onChange={handleChangeAvatar}></input>
+            </span>
           </div>
-          <div className='col-right'>
-            <h2>{isAdmin ? 'Alumnos' : 'Estadísticas'}</h2>
-            <div style={{ overflowX: 'auto' }}>
-              <table className='data_table'>
-                <thead>
-                  <tr>
-                    <th>Usuario</th>
-                    <th>Correo</th>
-                    <th>Credenciales</th>
-                    <th>Acción</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    users.map(user => (
-                      <tr key={user._id}>
-                        <td>{user.name}</td>
-                        <td>{user.email}</td>
-                        <td>
-                          {
-                            user.role === 1
-                              ? <FontAwesomeIcon icon='fa-chalkboard-user' title='Docente' />
-                              : <FontAwesomeIcon icon='fa-solid fa-graduation-cap' title='Alumno' />
-                          }
-                        </td>
-                        <td>
-                          <Link to={`/edit_user/${user._id}`}><FontAwesomeIcon icon='fa-solid fa-pen-to-square' title='Editar' /></Link>
-                          <FontAwesomeIcon icon='fa-solid fa-trash' title='Eliminar' onClick={() => handleDelete(user._id)} />
-                        </td>
-                      </tr>
-                    ))
-                  }
-                </tbody>
-              </table>
-            </div>
+          <div className='form-group'>
+            <label htmlFor='name'>Usuario</label>
+            <input type='text' name='name' id='name' defaultValue={user.name} placeholder='Usuario' onChange={handleChange}></input>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='email'>Correo</label>
+            <input type='email' name='email' id='email' defaultValue={user.email} placeholder='Correo' disabled></input>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='password'>Nueva Contraseña</label>
+            <input type='password' name='password' id='password' placeholder='Ingresa tu contraseña' value={password} onChange={handleChange}></input>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='cf_password'>Confirmar Nueva Contraseña</label>
+            <input type='password' name='cf_password' id='cf_password' placeholder='Confirma tu contraseña' value={cf_password} onChange={handleChange}></input>
+          </div>
+          <div>
+            <em style={{ color: 'crimson' }}>
+              * Si actualizas tu contraseña desde tu perfil de usuario, no podrás loguearte rápidamente por Google o Facebook.
+            </em>
+          </div>
+          <button disabled={loading} onClick={handleUpdate}>Actualizar datos</button>
+        </div>
+        <div className='col-right'>
+          <h2>{isAdmin ? 'Alumnos' : 'Estadísticas'}</h2>
+          <div style={{ overflowX: 'auto' }}>
+            <table className='data_table'>
+              <thead>
+                <tr>
+                  <th>Usuario</th>
+                  <th>Correo</th>
+                  <th>Credenciales</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  users.map(user => (
+                    <tr key={user._id}>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>
+                        {
+                          user.role === 1
+                            ? <FontAwesomeIcon icon='fa-chalkboard-user' title='Docente' />
+                            : <FontAwesomeIcon icon='fa-solid fa-graduation-cap' title='Alumno' />
+                        }
+                      </td>
+                      <td>
+                        <Link to={`/edit_user/${user._id}`}><FontAwesomeIcon icon='fa-solid fa-pen-to-square' title='Editar' /></Link>
+                        <FontAwesomeIcon icon='fa-solid fa-trash' title='Eliminar' onClick={() => handleDelete(user._id)} />
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

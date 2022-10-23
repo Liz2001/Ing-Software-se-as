@@ -9,6 +9,7 @@ import ForgotPassword from './auth/ForgotPassword';
 import ResetPassword from './auth/ResetPassword';
 import Profile from './profile/Profile';
 import EditUser from './profile/EditUser';
+import Home from './home/Home';
 import Test from './test/Test';
 
 function Body() {
@@ -18,6 +19,7 @@ function Body() {
   return (
     <section>
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/login' element={isLogged ? <Missing /> : <Login />} />
         <Route path='/register' element={isLogged ? <Missing /> : <Register />} />
         <Route path='/forgot_password' element={isLogged ? <Missing /> : <ForgotPassword />} />
