@@ -12,13 +12,24 @@ const Cuestionario = () => {
   let _id = parseInt(id)
   let preg_esc = []
   let contadorpreg=0
-
+  let module = "";
   const getTodos = async () => {
 
     try {
-        const response = await fetch("/question/all_infor");
+        /*const response = await fetch("/question/all_infor");
+        const jsonData = await response.json();
+        setTodos(jsonData)*/
+        if(_id == 1){
+          module = "Principiante"
+        }else if(id == 2){
+          module = "Intermedio"
+        }else{
+          module = "Avanzado"
+        }
+        const response = await fetch(`/question/infor/${module}`)
         const jsonData = await response.json();
         setTodos(jsonData)
+
     } catch (err) {
       console.error(err.message);
     }
@@ -89,24 +100,48 @@ const Cuestionario = () => {
 
    <div>{
     preg_esc.map(element => {
-      return(
-        <table>
-        <th>
-          <Video  pregunta={element.getQuestion()}/>
-        </th>
-        <tr>
-           <h1>¿Cual es el gesto que se ve en el video?</h1>
-        </tr>
-        <tr>
-            <button className='btn btn-primary' onClick={Correcto}>{element.getAnswer()}</button>
-            <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[0] }</button>  
-        </tr>
-        <tr>
-            <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[1]}</button>
-            <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[2]}</button>
-        </tr>
-        </table>      
+      if(element.getmodulo() === "Principiante"){
+        return(
+
+          <table>
+          <th>
+            <Video  pregunta={element.getQuestion()}/>
+          </th>
+          <tr>
+             <h1>¿Cual es el gesto que se ve en el video?</h1>
+          </tr>
+          <tr>
+              <button className='btn btn-primary' onClick={Correcto}>{element.getAnswer()}</button>
+              <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[0] }</button>  
+          </tr>
+          <tr>
+              <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[1]}</button>
+              <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[2]}</button>
+          </tr>
+          <tr>
+              <h1>{}</h1>
+          </tr>
+          </table>      
+          )
+      }else if(element.getmodulo() === "Intermedio"){
+        return(
+          <div>
+          <h1>Aca iria el modulo Intermedio, si tuvieramos data</h1>
+          <button className='btn btn-primary' onClick ={Correcto}> Completar Modulo</button>
+          <button className='btn btn-primary' onClick ={Incorrecto}> Incorrecto</button>
+          </div>
         )
+
+
+      }else if (element.getmodulo() === "Avanzado"){
+        return(
+          <div>
+          <h1>Aca iria el modulo Avanzado, si tuvieramos data</h1>
+          <button className='btn btn-primary' onClick ={Correcto}> Completar Modulo</button>
+          <button className='btn btn-primary' onClick ={Incorrecto}> Incorrecto</button>
+          </div>
+        )
+      }      
     })     
    }
    </div>   

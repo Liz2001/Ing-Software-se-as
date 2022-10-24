@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 const MainFactoria = require('./MainFactoria')
 function Modulo() {
+    let contadorprogreso=0;
     const factoria = MainFactoria.default
     const [todos, setTodos] = useState([]);
     const getTodos = async () => {
@@ -36,10 +37,15 @@ function CrearClases(){
   CrearClases()
   return (
     <div class="row">
-       {Objetos.map((task) => ( //Lo recorro y lo pinto.      
-       <Card key = {task.id} id= {task.getId()} titulo={task.getTitulo()} cuerpo ={task.getTexto()} disponible = {task.getDisponible()} completado = {task.getCompletado()} /> 
-       )
+       {Objetos.map((task) =>        
+       {
+        if(task.getCompletado() === true){
+          contadorprogreso++;
+        }
+        return <Card key = {task.id} id= {task.getId()} titulo={task.getTitulo()} cuerpo ={task.getTexto()} disponible = {task.getDisponible()} completado = {task.getCompletado()} /> 
+       }
        )}
+       <h1>{"Progreso: "+Math.round((contadorprogreso/Objetos.length)*100) + "%"}</h1>
     </div>
   )
 }
