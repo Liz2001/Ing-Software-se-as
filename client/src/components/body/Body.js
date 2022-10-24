@@ -9,6 +9,8 @@ import ForgotPassword from './auth/ForgotPassword';
 import ResetPassword from './auth/ResetPassword';
 import Profile from './profile/Profile';
 import EditUser from './profile/EditUser';
+import Modulo from './modulos/Modulo';
+import Cuestionario from './modulos/Cuestionario';
 import Home from './home/Home';
 import Test from './test/Test';
 
@@ -19,7 +21,6 @@ function Body() {
   return (
     <section>
       <Routes>
-        <Route path='/' element={<Home />} />
         <Route path='/login' element={isLogged ? <Missing /> : <Login />} />
         <Route path='/register' element={isLogged ? <Missing /> : <Register />} />
         <Route path='/forgot_password' element={isLogged ? <Missing /> : <ForgotPassword />} />
@@ -27,7 +28,9 @@ function Body() {
         <Route path='/user/activate/:activation_token' element={<ActivationEmail />} />
         <Route path='/profile' element={isLogged ? <Profile /> : <Missing />} />
         <Route path='/edit_user/:id' element={isAdmin ? <EditUser /> : <Missing />} />
+        <Route path='/' element={isLogged ? <Modulo /> : <Home />} exact />
         <Route path='/test' element={isLogged ? <Test /> : <Missing />} />
+        <Route path='/modulo/:id' element={isLogged ? <Cuestionario /> : <Missing />} />
       </Routes>
     </section>
   )
