@@ -35,14 +35,14 @@ function Header() {
   return (
     <header>
       <div className='logo'>
-        <h1><Link to='/'>Positive Signs</Link></h1>
+        <h1><Link to='/' style={{ textDecoration:'none' }}>Positive Signs</Link></h1>
       </div>
       <ul style={transForm}>
-        <li><Link to='/'><FontAwesomeIcon icon='fa-solid fa-hand-holding-dollar' /> Donaciones</Link></li>
+        <li><Link to='/' style={{ textDecoration:'none' }}><FontAwesomeIcon icon='fa-solid fa-hand-holding-dollar' /> Donaciones</Link></li>
         {
           isLogged
             ? userLink()
-            : <li><Link to='/login'><FontAwesomeIcon icon='fa-solid fa-user' /> Iniciar Sesión</Link></li>
+            : <li><Link to='/login' style={{ textDecoration:'none' }}><FontAwesomeIcon icon='fa-solid fa-user' /> Iniciar Sesión</Link></li>
         }
       </ul>
     </header>
