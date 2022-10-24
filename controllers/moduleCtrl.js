@@ -1,4 +1,3 @@
-const moduleModel = require('../models/moduleModel')
 const Module = require('../models/moduleModel')
 
 const moduleCtrl = {
