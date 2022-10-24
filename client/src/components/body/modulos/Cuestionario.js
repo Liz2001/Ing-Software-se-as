@@ -14,11 +14,7 @@ const Cuestionario = () => {
   let contadorpreg=0
   let module = "";
   const getTodos = async () => {
-
     try {
-        /*const response = await fetch("/question/all_infor");
-        const jsonData = await response.json();
-        setTodos(jsonData)*/
         if(_id == 1){
           module = "Principiante"
         }else if(id == 2){
@@ -37,7 +33,6 @@ const Cuestionario = () => {
 
   useEffect(() => {
    getTodos();
-
   }, []);
 
   let Preguntas =[]
@@ -100,9 +95,18 @@ const Cuestionario = () => {
 
    <div>{
     preg_esc.map(element => {
-      if(element.getmodulo() === "Principiante"){
+      if(element.getmodulo() === "Principiante"){ //Francisco aca se muestra lo que es principiante
         return(
-
+            <div>
+            <h1>{element.getQuestion()}</h1>
+              <img src={element.getAnswer()} onClick={Correcto} alt="Imagen de seña"></img>
+              <img src={element.getRespuestaInc()[0]} onClick={Incorrecto} alt="Imagen de seña"></img>
+              <img src={element.getRespuestaInc()[1]} onClick={Incorrecto} alt="Imagen de seña"></img>
+              <img src={element.getRespuestaInc()[2]} onClick={Incorrecto} alt="Imagen de seña"></img>
+            </div>
+          )
+      }else if(element.getmodulo() === "Intermedio"){//Francisco aca se muestra lo que es intermedio
+        return(
           <table>
           <th>
             <Video  pregunta={element.getQuestion()}/>
@@ -121,25 +125,29 @@ const Cuestionario = () => {
           <tr>
               <h1>{}</h1>
           </tr>
-          </table>      
-          )
-      }else if(element.getmodulo() === "Intermedio"){
-        return(
-          <div>
-          <h1>Aca iria el modulo Intermedio, si tuvieramos data</h1>
-          <button className='btn btn-primary' onClick ={Correcto}> Completar Modulo</button>
-          <button className='btn btn-primary' onClick ={Incorrecto}> Incorrecto</button>
-          </div>
+          </table>  
         )
-
-
-      }else if (element.getmodulo() === "Avanzado"){
+      }else if (element.getmodulo() === "Avanzado"){//Francisco aca se muestra lo que es avanzado
         return(
-          <div>
-          <h1>Aca iria el modulo Avanzado, si tuvieramos data</h1>
-          <button className='btn btn-primary' onClick ={Correcto}> Completar Modulo</button>
-          <button className='btn btn-primary' onClick ={Incorrecto}> Incorrecto</button>
-          </div>
+          <table>
+          <th>
+            <Video  pregunta={element.getQuestion()}/>
+          </th>
+          <tr>
+             <h1>¿Cual es el gesto que se ve en el video?</h1>
+          </tr>
+          <tr>
+              <button className='btn btn-primary' onClick={Correcto}>{element.getAnswer()}</button>
+              <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[0] }</button>  
+          </tr>
+          <tr>
+              <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[1]}</button>
+              <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[2]}</button>
+          </tr>
+          <tr>
+              <h1>{}</h1>
+          </tr>
+          </table>  
         )
       }      
     })     

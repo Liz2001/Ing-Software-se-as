@@ -8,7 +8,7 @@ function Card({titulo,cuerpo,disponible, completado,id}) {
     const noMostrar = () =>{
         console.log('no disponible')        
     }
-  return (
+  return (//Francisco aca se muestra el modulo
     <div className="col-4">
       <div className="card">
         <div className="card-body">
