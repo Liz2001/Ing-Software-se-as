@@ -10,8 +10,9 @@ import ResetPassword from './auth/ResetPassword';
 import Profile from './profile/Profile';
 import EditUser from './profile/EditUser';
 import Modulo from './modulos/Modulo';
-import Test from './test/Test';
 import Cuestionario from './modulos/Cuestionario';
+import Home from './home/Home';
+import Test from './test/Test';
 
 function Body() {
   const auth = useSelector(state => state.auth)
@@ -27,10 +28,9 @@ function Body() {
         <Route path='/user/activate/:activation_token' element={<ActivationEmail />} />
         <Route path='/profile' element={isLogged ? <Profile /> : <Missing />} />
         <Route path='/edit_user/:id' element={isAdmin ? <EditUser /> : <Missing />} />
-        <Route path='/' element={isLogged ? <Modulo /> : <></>} exact />
+        <Route path='/' element={isLogged ? <Modulo /> : <Home />} exact />
         <Route path='/test' element={isLogged ? <Test /> : <Missing />} />
         <Route path='/modulo/:id' element={isLogged ? <Cuestionario /> : <Missing />} />
-        
       </Routes>
     </section>
   )

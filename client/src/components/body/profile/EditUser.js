@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { showErrMsg, showSuccessMsg } from '../../utils/notification/Notification';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function EditUser() {
   const { id } = useParams()
@@ -24,7 +26,7 @@ function EditUser() {
         }
       })
     } else {
-      history.push('/profile')
+      history('/profile')
     }
   }, [users, id, history])
 
@@ -53,27 +55,29 @@ function EditUser() {
   }
 
   return (
-    <div className='profile_page edit_user'>
-      <div className='row'>
-        <button onClick={() => history.goBack()} className='go_back'>Regresar</button>
-      </div>
-      <div className='col-left'>
-        <h2>Editar Credenciales de Usuario</h2>
-        <div className='form-group'>
-          <label htmlFor='name'>Usuario</label>
-          <input type='text' name='name' id='name' defaultValue={editUser.name} disabled></input>
+    <div className='container'>
+      <Link to={'/profile'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
+      <div className='profile_page'>
+        <div className='col-left'>
+          <h2>Editar Credenciales de Usuario</h2>
+          <div className='form-group'>
+            <label htmlFor='name'>Usuario</label>
+            <input type='text' name='name' id='name' defaultValue={editUser.name} disabled></input>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='email'>Correo</label>
+            <input type='email' name='email' id='email' defaultValue={editUser.email} disabled></input>
+          </div>
+          <div className='form-group'>
+            <label className='admin_ckeckbox' htmlFor='isAdmin'>Docente
+              <input type='checkbox' id='isAdmin' checked={checkAdmin} onChange={handleCheck}></input>
+              <span className='checkmark'></span>
+            </label>
+          </div>
+          <button onClick={handleUpdate}>Actualizar credenciales</button>
+          {err && showErrMsg(err)}
+          {success && showSuccessMsg(success)}
         </div>
-        <div className='form-group'>
-          <label htmlFor='email'>Correo</label>
-          <input type='email' name='email' id='email' defaultValue={editUser.email} disabled></input>
-        </div>
-        <div className='form-group'>
-          <input type='checkbox' id='isAdmin' checked={checkAdmin} onChange={handleCheck}></input>
-          <label htmlFor='isAdmin'>Docente</label>
-        </div>
-        <button onClick={handleUpdate}>Actualizar credenciales</button>
-        {err && showErrMsg(err)}
-        {success && showSuccessMsg(success)}
       </div>
     </div>
   )

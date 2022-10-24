@@ -4,6 +4,7 @@ import axios from 'axios';
 import { showErrMsg, showSuccessMsg } from '../../utils/notification/Notification';
 import { dispatchLogin } from '../../../redux/actions/authAction';
 import { useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const initialState = {
   email: '',
@@ -37,25 +38,28 @@ function Login() {
   }
 
   return (
-    <div className='login_page'>
-      <h2>Iniciar Sesión</h2>
-      {err && showErrMsg(err)}
-      {success && showSuccessMsg(success)}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='email'>Correo</label>
-          <input type='text' placeholder='Ingresa tu correo' id='email' value={email} name='email' onChange={handleChangeInput}></input>
-        </div>
-        <div>
-          <label htmlFor='password'>Contraseña</label>
-          <input type='password' placeholder='Ingresa tu contraseña' id='password' value={password} name='password' onChange={handleChangeInput}></input>
-        </div>
-        <div className='row'>
-          <button type='submit'>Inicia Sesión</button>
-          <Link to='/forgot_password'>Olvidé mi contraseña</Link>
-        </div>
-      </form>
-      <p>¿Aún no te has registrado? <Link to='/register'> Regístrate Aquí</Link></p>
+    <div className='container'>
+      <Link to={'/'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
+      <div className='login_page'>
+        <h2>Iniciar Sesión</h2>
+        {err && showErrMsg(err)}
+        {success && showSuccessMsg(success)}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor='email'>Correo</label>
+            <input type='text' placeholder='Ingresa tu correo' id='email' value={email} name='email' onChange={handleChangeInput}></input>
+          </div>
+          <div>
+            <label htmlFor='password'>Contraseña</label>
+            <input type='password' placeholder='Ingresa tu contraseña' id='password' value={password} name='password' onChange={handleChangeInput}></input>
+          </div>
+          <div className='row'>
+            <button type='submit'>Inicia Sesión</button>
+            <Link to='/forgot_password'>Olvidé mi contraseña</Link>
+          </div>
+        </form>
+        <p>¿Aún no te has registrado? <Link to='/register'> Regístrate Aquí</Link></p>
+      </div>
     </div>
   )
 }

@@ -1,7 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import axios from 'axios'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Header() {
   const auth = useSelector(state => state.auth)
@@ -19,7 +20,7 @@ function Header() {
 
   const userLink = () => {
     return <li className='drop-nav'>
-      <Link to='#' className='avatar'><img src={user.avatar}/> {user.name}</Link>
+      <Link to='#' className='avatar'><img src={user.avatar} /> {user.name}</Link>
       <ul className='dropdown'>
         <li><Link to='/profile'>Perfil</Link></li>
         <li><Link to='/' onClick={handleLogout}>Cerrar Sesión</Link></li>
@@ -37,11 +38,11 @@ function Header() {
         <h1><Link to='/'>Positive Signs</Link></h1>
       </div>
       <ul style={transForm}>
-        <li><Link to='/'> Donaciones</Link></li>
+        <li><Link to='/'><FontAwesomeIcon icon='fa-solid fa-hand-holding-dollar' /> Donaciones</Link></li>
         {
           isLogged
             ? userLink()
-            : <li><Link to='/login'>Iniciar Sesión</Link></li>
+            : <li><Link to='/login'><FontAwesomeIcon icon='fa-solid fa-user' /> Iniciar Sesión</Link></li>
         }
       </ul>
     </header>

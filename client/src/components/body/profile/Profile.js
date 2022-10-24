@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
-import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { isLength, isMatch } from '../../utils/validation/Validation';
 import { showSuccessMsg, showErrMsg } from '../../utils/notification/Notification';
 import { fetchAllUsers, dispatchGetAllUsers } from '../../../redux/actions/usersAction';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const initialState = {
   name: '',
@@ -18,7 +19,6 @@ function Profile() {
   const auth = useSelector(state => state.auth)
   const token = useSelector(state => state.token)
   const users = useSelector(state => state.users)
-  const lusuarios = users
   const { user, isAdmin } = auth
   const [data, setData] = useState(initialState)
   const { name, password, cf_password, err, success } = data
@@ -124,7 +124,8 @@ function Profile() {
   }
 
   return (
-    <>
+    <div className='container'>
+      <Link to={'/'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
       <div>
         {err && showErrMsg(err)}
         {success && showSuccessMsg(success)}
@@ -136,7 +137,7 @@ function Profile() {
           <div className='avatar'>
             <img src={avatar ? avatar : user.avatar} alt=''></img>
             <span>
-             
+              <FontAwesomeIcon icon='fa-solid fa-camera' />
               <p>Cambiar</p>
               <input type='file' name='file' id='file_upload' onChange={handleChangeAvatar}></input>
             </span>
@@ -183,8 +184,15 @@ function Profile() {
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>
-                        <Link to={`/edit_user/${user._id}`}></Link>
-                        <button className='btn' onClick={() => handleDelete(user._id)}></button>
+                        {
+                          user.role === 1
+                            ? <FontAwesomeIcon icon='fa-chalkboard-user' title='Docente' />
+                            : <FontAwesomeIcon icon='fa-solid fa-graduation-cap' title='Alumno' />
+                        }
+                      </td>
+                      <td>
+                        <Link to={`/edit_user/${user._id}`}><FontAwesomeIcon icon='fa-solid fa-pen-to-square' title='Editar' /></Link>
+                        <FontAwesomeIcon icon='fa-solid fa-trash' title='Eliminar' onClick={() => handleDelete(user._id)} />
                       </td>
                     </tr>
                   ))
@@ -194,7 +202,7 @@ function Profile() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

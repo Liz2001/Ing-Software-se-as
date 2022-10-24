@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { showErrMsg, showSuccessMsg } from '../../utils/notification/Notification';
 import { isLength, isMatch } from '../../utils/validation/Validation';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const initialState = {
   password: '',
@@ -40,6 +42,9 @@ function ResetPassword() {
 
   return (
     <div className='fg_pass'>
+      <div>
+        <Link to={'/login'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
+      </div>
       <h2>Reestablece Tu Contraseña</h2>
       <div className='row'>
         {err && showErrMsg(err)}

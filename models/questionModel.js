@@ -5,6 +5,10 @@ const questionSchema = new mongoose.Schema({
     type: String
   },
 
+  number: {
+    type: String
+  },
+
   question: {
     type: String
   },

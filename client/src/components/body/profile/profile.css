@@ -1,7 +1,21 @@
+.container .return{
+  background: white;
+  margin: 20px;
+}
+
 .profile_page {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.profile_page .return{
+  background: white;
+  margin: 20px;
+}
+
+.profile_page FontAwesomeIcon {
+  cursor: pointer;
 }
 
 .profile_page .col-left {
@@ -126,7 +140,7 @@
   color: white;
 }
 
-.data_table i {
+.data_table FontAwesomeIcon {
   cursor: pointer;
 }
 
@@ -141,15 +155,13 @@
   margin-left: 7px;
 }
 
-.data_table .btn {
-  cursor: pointer;
-  background-color: transparent;
-}
-
-.edit_user .go_back {
+.edit_user .return{
   background: white;
   margin: 20px;
-  font-size: 1rem;
+}
+
+.edit_user FontAwesomeIcon {
+  cursor: pointer;
 }
 
 .edit_user .col-left {
@@ -170,4 +182,64 @@
 .edit_user .col-left #isAdmin+label {
   display: inline-block;
   margin-left: 5px;
+}
+
+.admin_ckeckbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 17px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.admin_ckeckbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.admin_ckeckbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.admin_ckeckbox input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.admin_ckeckbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.admin_ckeckbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

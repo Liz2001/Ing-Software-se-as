@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { showErrMsg, showSuccessMsg } from '../../utils/notification/Notification'
-import { isEmpty, isEmail, isLength, isMatch } from '../../utils/validation/Validation'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { showErrMsg, showSuccessMsg } from '../../utils/notification/Notification';
+import { isEmpty, isEmail, isLength, isMatch } from '../../utils/validation/Validation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const initialState = {
   name: '',
@@ -45,32 +46,35 @@ function Register() {
   }
 
   return (
-    <div className='login_page'>
-      <h2>Registro</h2>
-      {err && showErrMsg(err)}
-      {success && showSuccessMsg(success)}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='name'>Usuario</label>
-          <input type='text' placeholder='Ingresa tu usuario' id='name' value={name} name='name' onChange={handleChangeInput}></input>
-        </div>
-        <div>
-          <label htmlFor='email'>Correo</label>
-          <input type='text' placeholder='Ingresa tu correo' id='email' value={email} name='email' onChange={handleChangeInput}></input>
-        </div>
-        <div>
-          <label htmlFor='password'>Contraseña</label>
-          <input type='password' placeholder='Ingresa tu contraseña' id='password' value={password} name='password' onChange={handleChangeInput}></input>
-        </div>
-        <div>
-          <label htmlFor='password'>Confirmar Contraseña</label>
-          <input type='password' placeholder='Confirma tu contraseña' id='cf_password' value={cf_password} name='cf_password' onChange={handleChangeInput}></input>
-        </div>
-        <div className='row'>
-          <button type='submit'>Regístrate</button>
-        </div>
-      </form>
-      <p>¿Ya te encuentras registrado? <Link to='/login'> Inicia Sesión Aquí</Link></p>
+    <div className='container'>
+      <Link to={'/login'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
+      <div className='login_page'>
+        <h2>Registro</h2>
+        {err && showErrMsg(err)}
+        {success && showSuccessMsg(success)}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor='name'>Usuario</label>
+            <input type='text' placeholder='Ingresa tu usuario' id='name' value={name} name='name' onChange={handleChangeInput}></input>
+          </div>
+          <div>
+            <label htmlFor='email'>Correo</label>
+            <input type='text' placeholder='Ingresa tu correo' id='email' value={email} name='email' onChange={handleChangeInput}></input>
+          </div>
+          <div>
+            <label htmlFor='password'>Contraseña</label>
+            <input type='password' placeholder='Ingresa tu contraseña' id='password' value={password} name='password' onChange={handleChangeInput}></input>
+          </div>
+          <div>
+            <label htmlFor='password'>Confirmar Contraseña</label>
+            <input type='password' placeholder='Confirma tu contraseña' id='cf_password' value={cf_password} name='cf_password' onChange={handleChangeInput}></input>
+          </div>
+          <div className='row'>
+            <button type='submit'>Regístrate</button>
+          </div>
+        </form>
+        <p>¿Ya te encuentras registrado? <Link to='/login'> Inicia Sesión Aquí</Link></p>
+      </div>
     </div>
   )
 }

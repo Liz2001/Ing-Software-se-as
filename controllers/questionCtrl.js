@@ -3,9 +3,9 @@ const Question = require('../models/questionModel')
 const questionCtrl = {
   register: async (req, res) => {
     try {
-      const { module, question, correct, incorrect } = req.body
+      const { module, number, question, correct, incorrect } = req.body
       const newQuestion = new Question({
-        module, question, correct, incorrect
+        module, number, question, correct, incorrect
       })
       await newQuestion.save()
     } catch (err) {
