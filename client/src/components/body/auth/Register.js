@@ -68,14 +68,14 @@ function Register() {
             <input className="form-control" type='password' placeholder='Ingresa tu contraseña' id='password' value={password} name='password' onChange={handleChangeInput}></input>
           </div>
           <div className="mb-3">
-            <label className="fs-5 form-label" htmlFor='password'>Confirmar contraseña:</label>
+            <label className="fs-5 form-label" htmlFor='password'>Repetir contraseña:</label>
             <input className="form-control" type='password' placeholder='Confirma tu contraseña' id='cf_password' value={cf_password} name='cf_password' onChange={handleChangeInput}></input>
           </div>
           <div className="form-text mb-3">
               * Todos los campos son obligatorios.
             </div>
           <div className="d-grid gap-2 col-4 mx-auto mb-3">
-            <button className="btn btn-dark" type='submit'>REGÍSTRATE</button>
+            <button className="btn btn-dark" type='submit'>CREAR CUENTA</button>
           </div>
         </form>
         <p className='text-center'>¿Ya te encuentras registrado? <Link to='/login'> Inicia Sesión</Link></p>
