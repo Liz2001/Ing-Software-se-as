@@ -45,7 +45,7 @@ function ForgotPassword() {
           className="return"
         />
       </Link>
-      
+
       <div className="fg_pass">
         <div className="row shadow-lg p-3 rounded">
           <div className="mb-3">
