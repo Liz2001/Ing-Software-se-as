@@ -196,7 +196,7 @@ const Cuestionario = () => {
                 </th>
                 <tr>
                   <h1 className="mt-3 mb-4 pb-3 border-bottom">
-                    ¿Cual es el gesto que se ve en el video?
+                    ¿Cuál es el gesto que se ve en el video?
                   </h1>
                 </tr>
                 <tr>
