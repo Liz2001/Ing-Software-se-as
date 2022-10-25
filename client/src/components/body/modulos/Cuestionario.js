@@ -1,31 +1,29 @@
-
-import React from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom'
-import Video from './components/Video';
-import factoria from './MainFactoria';
+import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Video from "./components/Video";
+import factoria from "./MainFactoria";
 
 const Cuestionario = () => {
   const [todos, setTodos] = useState([]);
-  let { id } = useParams()
-  let _id = parseInt(id)
-  let preg_esc = []
-  let contadorpreg = 0
+  let { id } = useParams();
+  let _id = parseInt(id);
+  let preg_esc = [];
+  let contadorpreg = 0;
   let module = "";
   const getTodos = async () => {
     try {
       if (_id == 1) {
-        module = "Principiante"
+        module = "Principiante";
       } else if (id == 2) {
-        module = "Intermedio"
+        module = "Intermedio";
       } else {
-        module = "Avanzado"
+        module = "Avanzado";
       }
-      const response = await fetch(`/question/infor/${module}`)
+      const response = await fetch(`/question/infor/${module}`);
       const jsonData = await response.json();
-      setTodos(jsonData)
-
+      setTodos(jsonData);
     } catch (err) {
       console.error(err.message);
     }
@@ -35,124 +33,177 @@ const Cuestionario = () => {
     getTodos();
   }, []);
 
-  let Preguntas = []
-  let contador = 0
+  let Preguntas = [];
+  let contador = 0;
   function CrearClases() {
     if (contador === 0) {
       todos.map((task) => {
-        let temp = factoria.obtenerPregunta().crearPregunta(task.module, task.question, task.correct, task.incorrect)
-        Preguntas.push(temp)
-        console.log(Preguntas)
-      })
-      contador++
-      Randomizar()
+        let temp = factoria
+          .obtenerPregunta()
+          .crearPregunta(
+            task.module,
+            task.question,
+            task.correct,
+            task.incorrect
+          );
+        Preguntas.push(temp);
+        console.log(Preguntas);
+      });
+      contador++;
+      Randomizar();
     }
   }
 
   function Randomizar() {
     if (Preguntas.length > 0) {
       if (contadorpreg === 0) {
-        let random = Math.floor(Math.random() * Preguntas.length)
-        preg_esc.push(Preguntas[random])
+        let random = Math.floor(Math.random() * Preguntas.length);
+        preg_esc.push(Preguntas[random]);
       }
     }
   }
   const updateStatus = async (id, avaliable, completed) => {
     try {
-      const res = await fetch(`http://127.0.0.1:5000/module//update/${id}/${avaliable}/${completed}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-          avaliable: avaliable,
-          completed: completed
-        })
-      })
+      const res = await fetch(
+        `http://127.0.0.1:5000/module//update/${id}/${avaliable}/${completed}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            avaliable: avaliable,
+            completed: completed,
+          }),
+        }
+      );
     } catch (err) {
-      console.error(err.message)
+      console.error(err.message);
     }
-  }
+  };
 
   function Updatear() {
-    updateStatus(id.toString(), 'true', 'true')
+    updateStatus(id.toString(), "true", "true");
     if (_id < 3) {
-      updateStatus((_id + 1).toString(), 'true', 'false')
+      updateStatus((_id + 1).toString(), "true", "false");
     } else {
-      updateStatus(id.toString(), 'true', 'true')
+      updateStatus(id.toString(), "true", "true");
     }
   }
   function Correcto() {
-    Updatear()
+    Updatear();
     alert("Correcto");
-    window.location.replace(`/`)
+    window.location.replace(`/`);
   }
   function Incorrecto() {
-    alert("Incorrecto")
-    window.location.replace(`http://localhost:3000/modulo/${id}`)
+    alert("Incorrecto");
+    window.location.replace(`http://localhost:3000/modulo/${id}`);
   }
 
   CrearClases();
 
   return (
-    <div>{
-      preg_esc.map(element => {
-        if (element.getmodulo() === "Principiante") { //Francisco aca se muestra lo que es principiante
-          return (
-            <div>
-              <h1>{element.getQuestion()}</h1>
-              <img src={element.getAnswer()} onClick={Correcto} alt="Imagen de seña"></img>
-              <img src={element.getRespuestaInc()[0]} onClick={Incorrecto} alt="Imagen de seña"></img>
-              <img src={element.getRespuestaInc()[1]} onClick={Incorrecto} alt="Imagen de seña"></img>
-              <img src={element.getRespuestaInc()[2]} onClick={Incorrecto} alt="Imagen de seña"></img>
-            </div>
-          )
-        } else if (element.getmodulo() === "Intermedio") {//Francisco aca se muestra lo que es intermedio
-          return (
-            <table>
-              <th>
-                <Video pregunta={element.getQuestion()} />
-              </th>
-              <tr>
-                <h1>¿Cual es el gesto que se ve en el video?</h1>
-              </tr>
-              <tr>
-                <button className='btn btn-primary' onClick={Correcto}>{element.getAnswer()}</button>
-                <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[0]}</button>
-              </tr>
-              <tr>
-                <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[1]}</button>
-                <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[2]}</button>
-              </tr>
-              <tr>
-                <h1>{ }</h1>
-              </tr>
-            </table>
-          )
-        } else if (element.getmodulo() === "Avanzado") {//Francisco aca se muestra lo que es avanzado
-          return (
-            <table>
-              <th>
-                <Video pregunta={element.getQuestion()} />
-              </th>
-              <tr>
-                <h1>¿Cual es el gesto que se ve en el video?</h1>
-              </tr>
-              <tr>
-                <button className='btn btn-primary' onClick={Correcto}>{element.getAnswer()}</button>
-                <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[0]}</button>
-              </tr>
-              <tr>
-                <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[1]}</button>
-                <button className='btn btn-primary' onClick={Incorrecto}>{element.getRespuestaInc()[2]}</button>
-              </tr>
-              <tr>
-                <h1>{ }</h1>
-              </tr>
-            </table>
-          )
-        }
-      })
-    }
+    <div className="container">
+      <div className="mt-5 shadow-lg p-3 rounded">
+        {preg_esc.map((element) => {
+          if (element.getmodulo() === "Principiante") {
+            //Francisco aca se muestra lo que es principiante
+            return (
+              <div className="mt-3 text-center">
+                <h1 className="mb-4 fs-1 pb-4 border-bottom">{element.getQuestion()}</h1>
+                <h2 className="mb-4 fs-4">Haga click en la respuesta correcta:</h2>
+                <img
+                  className="border border-light"
+                  src={element.getAnswer()}
+                  onClick={Correcto}
+                  alt="Imagen de seña 1"
+                ></img>
+                <img
+                  className="border border-light"
+                  src={element.getRespuestaInc()[0]}
+                  onClick={Incorrecto}
+                  alt="Imagen de seña 2"
+                ></img>
+                <img
+                  className="border border-light"
+                  src={element.getRespuestaInc()[1]}
+                  onClick={Incorrecto}
+                  alt="Imagen de seña 3"
+                ></img>
+                <img
+                  className="border border-light"
+                  src={element.getRespuestaInc()[2]}
+                  onClick={Incorrecto}
+                  alt="Imagen de seña 4"
+                ></img>
+              </div>
+            );
+          } else if (element.getmodulo() === "Intermedio") {
+            //Francisco aca se muestra lo que es intermedio
+            return (
+              <table className="mt-3 container text-center">
+                <th className="border border-light">
+                  <Video pregunta={element.getQuestion()} />
+                </th>
+                <tr>
+                  <h1 className="mt-3 mb-4 pb-3 border-bottom">¿Cuál es el gesto que se ve en el video?</h1>
+                </tr>
+                <tr>
+                  <h2 className="mb-4 fs-4">Haga click en la respuesta correcta:</h2>
+                </tr>
+                <tr>
+                  <button className="btn btn-primary border border-white" onClick={Correcto}>
+                    {element.getAnswer()}
+                  </button>
+                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                    {element.getRespuestaInc()[0]}
+                  </button>
+                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                    {element.getRespuestaInc()[1]}
+                  </button>
+                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                    {element.getRespuestaInc()[2]}
+                  </button>
+                </tr>
+                <tr>
+                  <h1>{ }</h1>
+                </tr>
+              </table>
+            );
+          } else if (element.getmodulo() === "Avanzado") {
+            //Francisco aca se muestra lo que es avanzado
+            return (
+              <table className="mt-3 container text-center">
+                <th className="border border-light">
+                  <Video pregunta={element.getQuestion()} />
+                </th>
+                <tr>
+                  <h1 className="mt-3 mb-4 pb-3 border-bottom">¿Cual es el gesto que se ve en el video?</h1>
+                </tr>
+                <tr>
+                  <h2 className="mb-4 fs-4">Haga click en la respuesta correcta:</h2>
+                </tr>
+                <tr>
+                  <button className="btn btn-primary border border-white" onClick={Correcto}>
+                    {element.getAnswer()}
+                  </button>
+                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                    {element.getRespuestaInc()[0]}
+                  </button>
+                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                    {element.getRespuestaInc()[1]}
+                  </button>
+                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                    {element.getRespuestaInc()[2]}
+                  </button>
+                </tr>
+                <tr>
+                  <h1>{ }</h1>
+                </tr>
+              </table>
+            );
+          }
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cuestionario
+export default Cuestionario;
