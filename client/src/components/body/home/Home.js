@@ -16,20 +16,11 @@ function Home() {
               </h2>
             </div>
             <div className="mt-4">
-              <h4 style={{ textAlign: "justify" }}>
-                Bienvenido a Positive Signs, una app web en la cual podrá poner
+              <h4 style={{ textDecoration: "none", textAlign: "justify" }}>
+                Bienvenido a Positive Signs, una app web en la cual podrás poner
                 a prueba tus habilidades en el lenguaje de señas peruano. Debes
                 iniciar sesión o registrarte para realizar el quiz.
               </h4>
-              <table className="mt-4">
-                <th>Grupo 6:</th>
-                <tr>-Sebastian Guevara</tr>
-                <tr>-Angel Cuya</tr>
-                <tr>-Estefani Ramos</tr>
-                <tr>-Kevin Garcia</tr>
-                <tr>-Sebastian Bañon</tr>
-                <tr>-Francisco Diaz</tr>
-              </table>
             </div>
             <div className="mt-4">
               <div className="row">
@@ -69,6 +60,15 @@ function Home() {
             </p>
           </div>
         </div>
+        <table className="mt-4">
+          <th>Grupo 6:</th>
+          <tr>-Sebastian Guevara</tr>
+          <tr>-Angel Cuya</tr>
+          <tr>-Estefani Ramos</tr>
+          <tr>-Kevin Garcia</tr>
+          <tr>-Sebastian Bañon</tr>
+          <tr>-Francisco Diaz</tr>
+        </table>
       </div>
     </div>
   );
