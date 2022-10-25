@@ -35,7 +35,7 @@ function Header() {
   return (
     <header>
       <div className='logo'>
-        <h1><Link to='/' style={{ textDecoration:'none' }}>Positive Signs</Link></h1>
+        <h1><Link to='/' style={{ textDecoration:'none' }}><FontAwesomeIcon icon='fa-solid fa-thumbs-up' /> Positive Signs</Link></h1>
       </div>
       <ul style={transForm}>
         <li><Link to='/' style={{ textDecoration:'none' }}><FontAwesomeIcon icon='fa-solid fa-hand-holding-dollar' /> Donaciones</Link></li>
