@@ -1,28 +1,28 @@
-import PropTypes from 'prop-types'
-import React from 'react'
+import PropTypes from "prop-types";
+import React from "react";
 
-function Button({color, text, onClick}) {
+function Button({ color, text, onClick }) {
   return (
-
-    <button onClick={onClick} 
-    className='btn' style={{backgroundColor : color}}> 
-    {text} 
+    <button
+      onClick={onClick}
+      className="btn"
+      style={{ backgroundColor: color }}
+    >
+      {text}
     </button>
-    
-  )
+  );
 }
 
-export default Button
+export default Button;
 
 Button.defaultProps = {
-    color: 'steelblue'
-}
+  color: "steelblue",
+};
 
-Button.propTypes ={
-    text : PropTypes.string,
-    color : PropTypes.string,
-    
-}
+Button.propTypes = {
+  text: PropTypes.string,
+  color: PropTypes.string,
+};
 
 /*
   Navbar
