@@ -17,7 +17,7 @@ function Home() {
             </div>
             <div className="mt-4">
               <h4 style={{ textDecoration: "none", textAlign: "justify" }}>
-                Bienvenido a Positive Signs, una app web en la cual podrás poner
+                Bienvenidos a Positive Signs, una app web en la cual podrán poner
                 a prueba tus habilidades en el lenguaje de señas peruano. Debes
                 iniciar sesión o registrarte para realizar el quiz.
               </h4>
