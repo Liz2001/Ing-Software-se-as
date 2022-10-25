@@ -45,7 +45,10 @@ function CrearClases(){
         return <Card key = {task.id} id= {task.getId()} titulo={task.getTitulo()} cuerpo ={task.getTexto()} disponible = {task.getDisponible()} completado = {task.getCompletado()} /> 
        }
        )}
-       <h1>{"Progreso: "+Math.round((contadorprogreso/Objetos.length)*100) + "%"}</h1>
+       <div className='mt-5'>
+        <h1 className="text-uppercase fw-bold fs-3 text-center">{"Progreso del curso: "+Math.round((contadorprogreso/Objetos.length)*100) + "%"}</h1>
+        <div className='text-center form-text'>* Se actualizará el progreso cuando completes un módulo.</div>
+       </div>
     </div>
   )
 }
