@@ -48,32 +48,37 @@ function Register() {
   return (
     <div className='container'>
       <Link to={'/login'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
-      <div className='login_page'>
-        <h2>Registro</h2>
+      <div className='login_page shadow-lg p-3 rounded'>
+        <h2 className="fw-bold fs-1 text-center">Registro</h2>
         {err && showErrMsg(err)}
         {success && showSuccessMsg(success)}
+        
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='name'>Usuario</label>
-            <input type='text' placeholder='Ingresa tu usuario' id='name' value={name} name='name' onChange={handleChangeInput}></input>
+          <div className="mb-3">
+            <label className="fs-5 form-label" htmlFor='name'>Usuario:</label>
+            <input className="form-control" type='text' placeholder='Ingresa tu usuario' id='name' value={name} name='name' onChange={handleChangeInput}></input>
           </div>
-          <div>
-            <label htmlFor='email'>Correo</label>
-            <input type='text' placeholder='Ingresa tu correo' id='email' value={email} name='email' onChange={handleChangeInput}></input>
+
+          <div className="mb-3">
+            <label className="fs-5 form-label" htmlFor='email'>Correo:</label>
+            <input className="form-control" type='email' placeholder='Ingresa tu correo' id='email' value={email} name='email' onChange={handleChangeInput}></input>
           </div>
-          <div>
-            <label htmlFor='password'>Contraseña</label>
-            <input type='password' placeholder='Ingresa tu contraseña' id='password' value={password} name='password' onChange={handleChangeInput}></input>
+          <div lassName="mb-3">
+            <label className="fs-5 form-label" htmlFor='password'>Contraseña:</label>
+            <input className="form-control" type='password' placeholder='Ingresa tu contraseña' id='password' value={password} name='password' onChange={handleChangeInput}></input>
           </div>
-          <div>
-            <label htmlFor='password'>Confirmar Contraseña</label>
-            <input type='password' placeholder='Confirma tu contraseña' id='cf_password' value={cf_password} name='cf_password' onChange={handleChangeInput}></input>
+          <div className="mb-3">
+            <label className="fs-5 form-label" htmlFor='password'>Confirmar contraseña:</label>
+            <input className="form-control" type='password' placeholder='Confirma tu contraseña' id='cf_password' value={cf_password} name='cf_password' onChange={handleChangeInput}></input>
           </div>
-          <div className='row'>
-            <button type='submit'>Regístrate</button>
+          <div className="form-text mb-3">
+              * Todos los campos son obligatorios.
+            </div>
+          <div className="d-grid gap-2 col-4 mx-auto mb-3">
+            <button className="btn btn-dark" type='submit'>REGÍSTRATE</button>
           </div>
         </form>
-        <p>¿Ya te encuentras registrado? <Link to='/login'> Inicia Sesión Aquí</Link></p>
+        <p className='text-center'>¿Ya te encuentras registrado? <Link to='/login'> Inicia Sesión</Link></p>
       </div>
     </div>
   )
