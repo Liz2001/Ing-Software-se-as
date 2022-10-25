@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./home.css";
 import signLanguage from "../../images/signLanguage.png";
+import Members from "../about/Members";
 
 function Home() {
   return (
@@ -11,16 +12,16 @@ function Home() {
         <div className="row mt-4">
           <div className="col-6">
             <div>
-              <h2 className="fw-bold fs-1">
+              <h1 className="fw-bold fs-1" style={{ color: "teal" }}>
                 DEMUESTRA TUS CONOCIMIENTOS EN LEGUAJE DE SEÑAS
-              </h2>
+              </h1>
             </div>
             <div className="mt-4">
-              <h4 style={{ textDecoration: "none", textAlign: "justify" }}>
-                Bienvenidos a Positive Signs, una app web en la cual podrán poner
-                a prueba tus habilidades en el lenguaje de señas peruano. Debes
-                iniciar sesión o registrarte para realizar el quiz.
-              </h4>
+              <p className="fs-5" style={{ textAlign: "justify" }}>
+                Bienvenidos a Positive Signs, una app web en la cual podrán
+                poner a prueba tus habilidades en el lenguaje de señas peruano.
+                Debes iniciar sesión o registrarte para realizar el quiz.
+              </p>
             </div>
             <div className="mt-4">
               <div className="row">
@@ -48,28 +49,23 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="col-6">
+          <div className="col-6 mb-4">
             <img
               className="img-fluid rounded float-end mb-2"
               src={signLanguage}
               alt="imagenSL"
             ></img>
-            <p style={{ textAlign: "right" }}>
+            <div
+              className="fst-italic form-text"
+              style={{ textAlign: "right" }}
+            >
               Pantallazo de prueba Si puedes ver esto, significa que todo
               funciona bien :) Luego le pongo una interfaz más chvr.
-            </p>
+            </div>
           </div>
         </div>
-        <table className="mt-4">
-          <th>Grupo 6:</th>
-          <tr>-Sebastian Guevara</tr>
-          <tr>-Angel Cuya</tr>
-          <tr>-Estefani Ramos</tr>
-          <tr>-Kevin Garcia</tr>
-          <tr>-Sebastian Bañon</tr>
-          <tr>-Francisco Diaz</tr>
-        </table>
       </div>
+      <Members />
     </div>
   );
 }
