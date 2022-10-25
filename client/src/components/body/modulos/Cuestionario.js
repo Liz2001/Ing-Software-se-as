@@ -107,8 +107,12 @@ const Cuestionario = () => {
             //Francisco aca se muestra lo que es principiante
             return (
               <div className="mt-3 text-center">
-                <h1 className="mb-4 fs-1 pb-4 border-bottom">{element.getQuestion()}</h1>
-                <h2 className="mb-4 fs-4">Haga click en la respuesta correcta:</h2>
+                <h1 className="mb-4 fs-1 pb-4 border-bottom">
+                  {element.getQuestion()}
+                </h1>
+                <h2 className="mb-4 fs-4">
+                  Haga click en la respuesta correcta:
+                </h2>
                 <img
                   className="border border-light"
                   src={element.getAnswer()}
@@ -143,27 +147,43 @@ const Cuestionario = () => {
                   <Video pregunta={element.getQuestion()} />
                 </th>
                 <tr>
-                  <h1 className="mt-3 mb-4 pb-3 border-bottom">¿Cuál es el gesto que se ve en el video?</h1>
+                  <h1 className="mt-3 mb-4 pb-3 border-bottom">
+                    ¿Cuál es el gesto que se ve en el video?
+                  </h1>
                 </tr>
                 <tr>
-                  <h2 className="mb-4 fs-4">Haga click en la respuesta correcta:</h2>
+                  <h2 className="mb-4 fs-4">
+                    Haga click en la respuesta correcta:
+                  </h2>
                 </tr>
                 <tr>
-                  <button className="btn btn-primary border border-white" onClick={Correcto}>
+                  <button
+                    className="btn btn-primary border border-white"
+                    onClick={Correcto}
+                  >
                     {element.getAnswer()}
                   </button>
-                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                  <button
+                    className="btn btn-primary border border-white"
+                    onClick={Incorrecto}
+                  >
                     {element.getRespuestaInc()[0]}
                   </button>
-                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                  <button
+                    className="btn btn-primary border border-white"
+                    onClick={Incorrecto}
+                  >
                     {element.getRespuestaInc()[1]}
                   </button>
-                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                  <button
+                    className="btn btn-primary border border-white"
+                    onClick={Incorrecto}
+                  >
                     {element.getRespuestaInc()[2]}
                   </button>
                 </tr>
                 <tr>
-                  <h1>{ }</h1>
+                  <h1>{}</h1>
                 </tr>
               </table>
             );
@@ -175,27 +195,43 @@ const Cuestionario = () => {
                   <Video pregunta={element.getQuestion()} />
                 </th>
                 <tr>
-                  <h1 className="mt-3 mb-4 pb-3 border-bottom">¿Cual es el gesto que se ve en el video?</h1>
+                  <h1 className="mt-3 mb-4 pb-3 border-bottom">
+                    ¿Cual es el gesto que se ve en el video?
+                  </h1>
                 </tr>
                 <tr>
-                  <h2 className="mb-4 fs-4">Haga click en la respuesta correcta:</h2>
+                  <h2 className="mb-4 fs-4">
+                    Haga click en la respuesta correcta:
+                  </h2>
                 </tr>
                 <tr>
-                  <button className="btn btn-primary border border-white" onClick={Correcto}>
+                  <button
+                    className="btn btn-primary border border-white"
+                    onClick={Correcto}
+                  >
                     {element.getAnswer()}
                   </button>
-                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                  <button
+                    className="btn btn-primary border border-white"
+                    onClick={Incorrecto}
+                  >
                     {element.getRespuestaInc()[0]}
                   </button>
-                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                  <button
+                    className="btn btn-primary border border-white"
+                    onClick={Incorrecto}
+                  >
                     {element.getRespuestaInc()[1]}
                   </button>
-                  <button className="btn btn-primary border border-white" onClick={Incorrecto}>
+                  <button
+                    className="btn btn-primary border border-white"
+                    onClick={Incorrecto}
+                  >
                     {element.getRespuestaInc()[2]}
                   </button>
                 </tr>
                 <tr>
-                  <h1>{ }</h1>
+                  <h1>{}</h1>
                 </tr>
               </table>
             );
