@@ -13,27 +13,27 @@ function Members() {
         </thead>
         <tbody>
           <tr>
-            <td>Estefani Ramos</td>
+            <td>Estefani Lizbett Ramos Mendoza</td>
             <td>Product Owner y Jefe del Proyecto</td>
           </tr>
           <tr>
-            <td>Angel Cuya</td>
+            <td>Angel Oscar Cuya Sanchez</td>
             <td>Scrum Master</td>
           </tr>
           <tr>
-            <td>Kevin Garcia</td>
+            <td>Kevin Arnold Garcia Perez</td>
             <td>Product Owner</td>
           </tr>
           <tr>
-            <td>Sebastian Guevara</td>
+            <td>Sebastian Alfredo Guevara Vásquez</td>
             <td>Desarrollador y Tester</td>
           </tr>
           <tr>
-            <td>Sebastian Bañon</td>
+            <td>Sebastian Bañón Félix</td>
             <td>Desarrollador</td>
           </tr>
           <tr>
-            <td>Francisco Diaz</td>
+            <td>Francisco Manuel Díaz Delgado</td>
             <td>Desarrollador</td>
           </tr>
         </tbody>
