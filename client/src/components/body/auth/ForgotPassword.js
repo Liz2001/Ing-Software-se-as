@@ -49,7 +49,7 @@ function ForgotPassword() {
       <div className="fg_pass">
         <div className="row shadow-lg p-3 rounded">
           <div className="mb-3">
-            <h2 className="fw-bold fs-1 text-center">
+            <h2 className="fw-bold fs-1 text-center pb-3 border-bottom">
               ¿Olvidaste Tu Contraseña?
             </h2>
             {err && showErrMsg(err)}

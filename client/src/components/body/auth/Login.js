@@ -51,7 +51,7 @@ function Login() {
         />
       </Link>
       <div className="login_page shadow-lg p-3 rounded">
-        <h2 className="fw-bold fs-1 text-center">Iniciar Sesión</h2>
+        <h2 className="fw-bold fs-1 text-center pb-3 border-bottom">Iniciar Sesión</h2>
         {err && showErrMsg(err)}
         {success && showSuccessMsg(success)}
 

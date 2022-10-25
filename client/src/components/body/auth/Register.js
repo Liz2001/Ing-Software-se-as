@@ -76,7 +76,7 @@ function Register() {
         />
       </Link>
       <div className="login_page shadow-lg p-3 rounded">
-        <h2 className="fw-bold fs-1 text-center">Registro</h2>
+        <h2 className="fw-bold fs-1 text-center pb-3 border-bottom">Registro</h2>
         {err && showErrMsg(err)}
         {success && showSuccessMsg(success)}
 
