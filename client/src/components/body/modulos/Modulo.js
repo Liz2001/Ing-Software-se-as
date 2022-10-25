@@ -62,8 +62,8 @@ function Modulo() {
         );
       })}
       <div className="mt-5">
-        <h1 className="text-uppercase fw-bold fs-3 text-center">
-          {"Progreso del curso: " +
+        <h1 className="fw-bold fs-3 text-center">
+          {"PROGRESO ACTUAL: " +
             Math.round((contadorprogreso / Objetos.length) * 100) +
             "%"}
         </h1>
