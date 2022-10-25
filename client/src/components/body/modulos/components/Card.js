@@ -12,10 +12,10 @@ function Card({titulo,cuerpo,disponible, completado,id}) {
     <div className="col-4">
       <div className="card">
         <div className="card-body">
-          <h3 className="card-title">{titulo}</h3>
-          <p className="card-text">{cuerpo}</p>
-          {  disponible ? <Link to= {`/modulo/${id}`} className="btn btn-primary">Empezar Curso</Link>
-            : <Button  color= 'gray' text='Empezar curso' onClick={noMostrar}/>
+          <h3 className="card-title fw-bold fs-3 text-center text-uppercase">Nivel {titulo}</h3>
+          <p style={{ textAlign:'justify' }} className="card-text">{cuerpo}</p>
+          {  disponible ? <Link to= {`/modulo/${id}`} className="btn btn-primary">Empezar módulo</Link>
+            : <Button  color= 'gray' text='Módulo bloqueado' onClick={noMostrar}/>
           }          
         </div>
       </div>
