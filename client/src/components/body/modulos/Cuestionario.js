@@ -29,7 +29,7 @@ const Cuestionario = () => {
     } catch (err) {
       console.error(err.message);
     }
-  }; // getTodos(BASE DE DATOS -->) SET TODOS(ALMACENA LOS OBJETOS QUE ME HAN DADO) --> CREAR CLASES(TODOS LOS OBJETOS LO TRANSFORMO) --> RANDOMIZAR(ELIGE UN OBJETO) --> PINTA TODO
+  }; 
 
   useEffect(() => {
     getTodos();
@@ -105,9 +105,8 @@ const Cuestionario = () => {
     <div className="container">
       <Link to={'/'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
       <div className="shadow-lg p-3 rounded">
-        {preg_esc.map((element) => {
+        {preg_esc.map((element) => { 
           if (element.getmodulo() === "Principiante") {
-            //Francisco aca se muestra lo que es principiante
             return (
               <div className="mt-3 text-center">
                 <h1 className="fs-1 mb-4 text-uppercase">- Nivel principiante -</h1>
@@ -144,7 +143,6 @@ const Cuestionario = () => {
               </div>
             );
           } else if (element.getmodulo() === "Intermedio") {
-            //Francisco aca se muestra lo que es intermedio
             return (
               <table className="mt-3 container text-center">
                 <th className="border border-light">
@@ -193,7 +191,6 @@ const Cuestionario = () => {
               </table>
             );
           } else if (element.getmodulo() === "Avanzado") {
-            //Francisco aca se muestra lo que es avanzado
             return (
               <table className="mt-3 container text-center">
                 <th className="border border-light">
