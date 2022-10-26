@@ -8,7 +8,7 @@ function Card({ titulo, cuerpo, disponible, completado, id }) {
     console.log('no disponible')
   }
   return (//Francisco aca se muestra el modulo
-    <div className="col-4 mt-5">
+    <div className="col-4 mt-3">
       <div className="card">
         <div className="card-body">
           <h3 className="card-title fw-bold fs-3 text-center text-uppercase pb-2 border-bottom">Nivel {titulo}</h3>
