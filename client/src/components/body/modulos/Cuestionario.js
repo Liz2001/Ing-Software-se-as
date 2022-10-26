@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Video from "./components/Video";
 import factoria from "./MainFactoria";
 
@@ -101,7 +103,8 @@ const Cuestionario = () => {
 
   return (
     <div className="container">
-      <div className="mt-5 shadow-lg p-3 rounded">
+      <Link to={'/'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
+      <div className="shadow-lg p-3 rounded">
         {preg_esc.map((element) => {
           if (element.getmodulo() === "Principiante") {
             //Francisco aca se muestra lo que es principiante
