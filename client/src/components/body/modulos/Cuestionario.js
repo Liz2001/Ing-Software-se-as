@@ -107,6 +107,7 @@ const Cuestionario = () => {
             //Francisco aca se muestra lo que es principiante
             return (
               <div className="mt-3 text-center">
+                <h1 className="fs-1 mb-4 text-uppercase">- Nivel principiante -</h1>
                 <h1 className="mb-4 fs-1 pb-4 border-bottom">
                   {element.getQuestion()}
                 </h1>
@@ -144,6 +145,7 @@ const Cuestionario = () => {
             return (
               <table className="mt-3 container text-center">
                 <th className="border border-light">
+                  <h1 className="fs-1 mb-4 text-uppercase pb-4">- Nivel intermedio -</h1>
                   <Video pregunta={element.getQuestion()} />
                 </th>
                 <tr>
@@ -183,7 +185,7 @@ const Cuestionario = () => {
                   </button>
                 </tr>
                 <tr>
-                  <h1>{}</h1>
+                  <h1>{ }</h1>
                 </tr>
               </table>
             );
@@ -192,6 +194,7 @@ const Cuestionario = () => {
             return (
               <table className="mt-3 container text-center">
                 <th className="border border-light">
+                  <h1 className="fs-1 mb-4 text-uppercase pb-4">- Nivel avanzado -</h1>
                   <Video pregunta={element.getQuestion()} />
                 </th>
                 <tr>
@@ -231,7 +234,7 @@ const Cuestionario = () => {
                   </button>
                 </tr>
                 <tr>
-                  <h1>{}</h1>
+                  <h1>{ }</h1>
                 </tr>
               </table>
             );
