@@ -13,7 +13,7 @@ function Card({ titulo, cuerpo, disponible, completado, id }) {
         <div className="card-body">
           <h3 className="card-title fw-bold fs-3 text-center text-uppercase pb-2 border-bottom">Nivel {titulo}</h3>
           <p style={{ textAlign: 'justify' }} className="card-text">{cuerpo}</p>
-          {disponible ? <Link to={`/modulo/${id}`} className="btn btn-primary">Empezar módulo</Link>
+          {disponible ? <Link to={`/modulo/${id}`} className="btn btn-primary d-grid col-6 mx-auto">Empezar módulo</Link>
             : <Button color='gray' text='Módulo bloqueado' onClick={noMostrar} />
           }
         </div>
