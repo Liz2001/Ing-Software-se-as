@@ -14,6 +14,8 @@ const Cuestionario = () => {
   let preg_esc = [];
   let contadorpreg = 0;
   let module = "";
+
+
   const getTodos = async () => {
     try {
       if (_id == 1) {
@@ -56,18 +58,21 @@ const Cuestionario = () => {
     }
   }
 
-  function Randomizar() {
-    if (Preguntas.length > 0) {
-      if (contadorpreg === 0) {
+  function Randomizar() { //Funcion para randomizar, y obtener una pregunta aleatoria.
+    if (Preguntas.length > 0) { //Una vez se hayan recibido las preguntas y transformado a clase.
+      if (contadorpreg === 0) {//mientras que no se haya elegido.
         let random = Math.floor(Math.random() * Preguntas.length);
         preg_esc.push(Preguntas[random]);
       }
     }
   }
+
   const updateStatus = async (id, avaliable, completed) => {
     try {
       const res = await fetch(
-        `http://127.0.0.1:5000/module//update/${id}/${avaliable}/${completed}`,
+        `http://127.0.0.1:5000/module//update/${id}/${avaliable}/${completed}`, 
+        //Manda al backend con el fin de actualizarlo 
+        //el id del modulo, y los valores de completado y disponible
         {
           method: "PATCH",
           body: JSON.stringify({
@@ -81,7 +86,7 @@ const Cuestionario = () => {
     }
   };
 
-  function Updatear() {
+  function Updatear() {//Funcion que updatea de acuerdo al modulo que te encuentres.
     updateStatus(id.toString(), "true", "true");
     if (_id < 3) {
       updateStatus((_id + 1).toString(), "true", "false");
@@ -89,24 +94,24 @@ const Cuestionario = () => {
       updateStatus(id.toString(), "true", "true");
     }
   }
-  function Correcto() {
+  function Correcto() { //Funcion en caso de pregunta correcta
     Updatear();
     alert("Correcto");
     window.location.replace(`/`);
   }
-  function Incorrecto() {
+  function Incorrecto() { //Funcion en caso de pregunta incorrecta.
     alert("Incorrecto");
     window.location.replace(`http://localhost:3000/modulo/${id}`);
   }
 
-  CrearClases();
+  CrearClases(); //Le pido crear clases, de una vez.
 
   return (
     <div className="container">
       <Link to={'/'}><FontAwesomeIcon icon='fa-solid fa-arrow-left' title='Regresar' className='return' /></Link>
       <div className="shadow-lg p-3 rounded">
         {preg_esc.map((element) => { 
-          if (element.getmodulo() === "Principiante") {
+          if (element.getmodulo() === "Principiante") { //Si el modulo es Principiante
             return (
               <div className="mt-3 text-center">
                 <h1 className="fs-1 mb-4 text-uppercase">- Nivel principiante -</h1>
@@ -142,7 +147,7 @@ const Cuestionario = () => {
                 ></img>
               </div>
             );
-          } else if (element.getmodulo() === "Intermedio") {
+          } else if (element.getmodulo() === "Intermedio") {//Si el modulo es intermedio
             return (
               <table className="mt-3 container text-center">
                 <th className="border border-light">
@@ -190,7 +195,7 @@ const Cuestionario = () => {
                 </tr>
               </table>
             );
-          } else if (element.getmodulo() === "Avanzado") {
+          } else if (element.getmodulo() === "Avanzado") { //Si el modulo es avanzado
             return (
               <table className="mt-3 container text-center">
                 <th className="border border-light">

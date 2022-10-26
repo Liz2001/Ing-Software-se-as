@@ -2,9 +2,6 @@ import React from "react";
 import Card from "./components/Card";
 import { useState } from "react";
 import { useEffect } from "react";
-//import Button from "./components/Button";
-//import { Link } from 'react-router-dom';
-//import Carrusel from "./components/Carrusel"
 import img1 from "../../images/img1.jpg";
 import img2 from "../../images/img2.jpg";
 import img3 from "../../images/img3.jpg";
