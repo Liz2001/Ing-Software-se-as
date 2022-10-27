@@ -1,10 +1,8 @@
 import React from "react";
-import Card from "./components/Card";
+//import Card from "./components/Card";
+import Card3 from './components/Card3';
 import { useState } from "react";
 import { useEffect } from "react";
-import img1 from "../../images/img1.jpg";
-import img2 from "../../images/img2.jpg";
-import img3 from "../../images/img3.jpg";
 
 const MainFactoria = require("./MainFactoria");
 function Modulo() {
@@ -60,6 +58,7 @@ function Modulo() {
           if (task.getCompletado() === true) { //Si esta completado, progreso + 1
             contadorprogreso++;
           }
+          /*
           return (
             <Card
               key={task.id}
@@ -70,27 +69,25 @@ function Modulo() {
               completado={task.getCompletado()}
             />
           );
+          */
+          return (
+            <Card3
+              key={task.id}
+              id={task.getId()}
+              titulo={task.getTitulo()}
+              cuerpo={task.getTexto()}
+              disponible={task.getDisponible()}
+              completado={task.getCompletado()}
+            />
+          );
         })}
-        <div className="container mt-4">
-          <div className="row">
-            <div className="col-4">
-              <img src={img1} className="rounded img-fluid" alt="modulo1" />
-            </div>
-            <div className="col-4">
-              <img src={img2} className="rounded img-fluid" alt="modulo2" />
-            </div>
-            <div className="col-4">
-              <img src={img3} className="rounded img-fluid" alt="modulo3" />
-            </div>
-          </div>
-        </div>
         <div className="mt-5">
           <h1 className="fw-bold fs-3 text-center">
             {"PROGRESO ACTUAL: " +
               Math.round((contadorprogreso / Objetos.length) * 100) + //Calculo el porcentaje
               "%"}
           </h1>
-          <div className="text-center form-text">
+          <div className="text-center form-text mb-5">
             * Se actualizará el progreso cuando completes un módulo.
           </div>
         </div>
