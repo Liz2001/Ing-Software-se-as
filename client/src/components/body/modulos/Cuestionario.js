@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Video from "./components/Video";
 import factoria from "./MainFactoria";
 
-const Cuestionario = () => {
+function Cuestionario(){
   const [todos, setTodos] = useState([]);
   let { id } = useParams();
   let _id = parseInt(id);
@@ -250,4 +250,12 @@ const Cuestionario = () => {
   );
 };
 
-export default Cuestionario;
+class CuestionarioComponente{
+
+  InitCuestionario(){
+    return Cuestionario()
+  }
+}
+
+let VistaCuestionario = new CuestionarioComponente()
+export default VistaCuestionario.InitCuestionario;

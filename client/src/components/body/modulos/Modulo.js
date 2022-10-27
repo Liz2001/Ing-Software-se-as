@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import img1 from "../../images/img1.jpg";
 import img2 from "../../images/img2.jpg";
 import img3 from "../../images/img3.jpg";
-
 const MainFactoria = require("./MainFactoria");
+
 function Modulo() {
   let contadorprogreso = 0;
   const factoria = MainFactoria.default;
@@ -45,7 +45,6 @@ function Modulo() {
       contador++;
     }
   }
-  console.log(todos);
   CrearClases();
 
 
@@ -99,5 +98,13 @@ function Modulo() {
   );
 }
 
+class ModuloComponente{
 
-export default Modulo;
+  InitModulo(){
+    return Modulo()
+  }
+}
+
+let VistaModulos = new ModuloComponente
+
+export default  VistaModulos.InitModulo;
