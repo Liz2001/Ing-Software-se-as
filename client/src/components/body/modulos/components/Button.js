@@ -5,7 +5,7 @@ function Button({ color, text, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="btn d-grid col-4 mx-auto"
+      className="rounded-0 btn d-grid mx-auto"
       style={{ backgroundColor: color }}
     >
       {text}
