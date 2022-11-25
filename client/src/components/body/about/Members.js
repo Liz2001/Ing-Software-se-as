@@ -2,8 +2,8 @@ import React from "react";
 
 function Members() {
   return (
-    <div className="container col-2 mt-4">
-      <p className="fs-5 fw-semibold text-center border-bottom pb-2">GRUPO 6</p>
+    <div className="container col-6 mt-4">
+      <p className="fs-5 fw-semibold text-center border-bottom pb-2">MIEMBROS</p>
       <table className="table">
         <thead>
           <tr>
