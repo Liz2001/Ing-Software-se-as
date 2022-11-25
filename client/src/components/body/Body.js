@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Donations from './donations/Donations';
 import Login from './auth/Login';
 import Register from './auth/Register';
 import ActivationEmail from './auth/ActivationEmail';
@@ -21,6 +22,7 @@ function Body() {
   return (
     <section>
       <Routes>
+        <Route path='/donations' element={<Donations />} />
         <Route path='/login' element={isLogged ? <Missing /> : <Login />} />
         <Route path='/register' element={isLogged ? <Missing /> : <Register />} />
         <Route path='/forgot_password' element={isLogged ? <Missing /> : <ForgotPassword />} />
@@ -36,4 +38,4 @@ function Body() {
   )
 }
 
-export default Body
+export default Body;

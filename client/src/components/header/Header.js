@@ -38,7 +38,7 @@ function Header() {
         <h1><Link to='/' style={{ textDecoration:'none' }}><FontAwesomeIcon icon='fa-solid fa-thumbs-up' /> Positive Signs</Link></h1>
       </div>
       <ul style={transForm}>
-        <li><Link to='/' style={{ textDecoration:'none' }}><FontAwesomeIcon icon='fa-solid fa-hand-holding-dollar' /> Donaciones</Link></li>
+        <li><Link to='/donations' style={{ textDecoration:'none' }}><FontAwesomeIcon icon='fa-solid fa-hand-holding-dollar' /> Donaciones</Link></li>
         {
           isLogged
             ? userLink()
@@ -49,4 +49,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Header;

@@ -19,6 +19,21 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Por favor, ingrese su contraseña.']
   },
 
+  avaliable: {
+    type: Number,
+    default: 1
+  },
+
+  completed: {
+    type: Number,
+    default: 1
+  },
+
+  progress: {
+    type: Number,
+    default: 0
+  },
+
   role: {
     type: Number,
     default: 0 //0 = alumno, 1 = administrador / docente
