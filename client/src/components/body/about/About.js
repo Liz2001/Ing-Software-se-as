@@ -23,7 +23,7 @@ function About() {
           <div className="col-md-6">
             <button className="btn btn-dark btn-lg">
               <Link
-                to="/login"
+                to="/donations"
                 style={{ textDecoration: "none", color: "white" }}
               >
                 <FontAwesomeIcon icon="fa-solid fa-hand-holding-dollar" />{" "}
