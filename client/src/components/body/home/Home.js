@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./home.css";
 import signLanguage from "../../images/signLanguage.png";
-import Members from "../about/Members";
 
 function Home() {
   return (
@@ -65,7 +64,6 @@ function Home() {
           </div>
         </div>
       </div>
-      <Members />
     </div>
   );
 }

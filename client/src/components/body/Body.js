@@ -14,6 +14,7 @@ import Modulo from './modulos/Modulo';
 import Cuestionario from './modulos/Cuestionario';
 import Home from './home/Home';
 import Test from './test/Test';
+import About from './about/About'
 
 function Body() {
   const auth = useSelector(state => state.auth)
@@ -23,6 +24,7 @@ function Body() {
     <section>
       <Routes>
         <Route path='/donations' element={<Donations />} />
+        <Route path='/about' element={<About />} />
         <Route path='/login' element={isLogged ? <Missing /> : <Login />} />
         <Route path='/register' element={isLogged ? <Missing /> : <Register />} />
         <Route path='/forgot_password' element={isLogged ? <Missing /> : <ForgotPassword />} />
