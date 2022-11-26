@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useSelector } from 'react-redux';
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +10,8 @@ import factoria from "./MainFactoria";
 
 function Cuestionario(){
   const [todos, setTodos] = useState([]);
+  const auth = useSelector(state => state.auth)
+  const { user } = auth
   let { id } = useParams();
   let _id = parseInt(id);
   let preg_esc = [];
@@ -67,6 +70,23 @@ function Cuestionario(){
     }
   }
 
+  const CalcularPorcentaje = async (id,progress) => {
+    try {
+      const res = await fetch(
+        `http://127.0.0.1:5000/module//updateProgreso/${id}/${progress}`, 
+        //Manda al backend con el fin de actualizarlo 
+        //el id del modulo, y los valores de completado y disponible
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            progress: progress              
+          }),
+        }
+      );
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
   const updateStatus = async (id, avaliable, completed) => {
     try {
       const res = await fetch(
@@ -86,16 +106,29 @@ function Cuestionario(){
     }
   };
 
-  function Updatear() {//Funcion que updatea de acuerdo al modulo que te encuentres.
-    updateStatus(id.toString(), "true", "true");
-    if (_id < 3) {
-      updateStatus((_id + 1).toString(), "true", "false");
-    } else {
-      updateStatus(id.toString(), "true", "true");
+  function Updatear(){
+    if(_id === 1){
+      updateStatus(user._id, 2, 1)
+    }
+    if(_id === 2){
+      updateStatus(user._id, 3, 2)
+    }
+    if(_id === 3 ){
+      updateStatus(user._id,3,3)
     }
   }
-  function Correcto() { //Funcion en caso de pregunta correcta
-    Updatear();
+
+  function UpdatearPorcentaje() {//Funcion que updatea de acuerdo al modulo que te encuentres.
+    
+    if (user.progress + 33 >= 100 || user.progress + 33 == 99) {
+      CalcularPorcentaje(user._id,100)
+    }else{
+      CalcularPorcentaje(user._id,user.progress + 33)
+    }
+  }
+  function Correcto() {
+    Updatear() //Funcion en caso de pregunta correcta
+    UpdatearPorcentaje();
     alert("Correcto");
     window.location.replace(`/`);
   }

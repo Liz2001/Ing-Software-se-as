@@ -1,10 +1,13 @@
 import React from "react";
 import Card3 from "./components/Card3";
 import { useState } from "react";
+import { useSelector } from 'react-redux';
 import { useEffect } from "react";
 const MainFactoria = require("./MainFactoria");
 
 function Modulo() {
+  const auth = useSelector(state => state.auth)
+  const { user } = auth
   let contadorprogreso = 0;
   const factoria = MainFactoria.default;
   const [todos, setTodos] = useState([]);
@@ -24,8 +27,62 @@ function Modulo() {
 
   let Objetos = [];
   let contador = 0;
+
+  function obtenerProgreso(){
+    todos.map((modulo) => {
+       Disponible(modulo)
+       Completo(modulo)
+    })
+
+  }
+  function Disponible(modulo){
+    if(user.avaliable === 1){
+      if(modulo.title === "Avanzado" || modulo.title === "Intermedio"){
+          modulo.avaliable= false;
+      }
+      if(modulo.title === "Principiante"){
+          modulo.avaliable = true;
+      }
+    }
+     if(user.avaliable === 2){
+      if(modulo.title === "Intermedio" || modulo.title === "Principiante"){
+        modulo.avaliable = true;
+      }
+      if(modulo.title === "Avanzado"){
+        modulo.avaliable = false;
+      }
+  }
+  if(user.avaliable === 3){
+      modulo.avaliable = true;
+   }}
+
+  function Completo(modulo){
+      console.log("Entre")
+      if(user.completed == 1){
+        if(modulo.title === "Principiante"){
+          modulo.completed = true;
+        }else{
+          modulo.completed = false;
+        }
+      } 
+      if(user.completed == 2){
+        if(modulo.title === "Intermedio" || modulo.title === "Principiante"){
+          modulo.completed = true;
+        }else{
+          modulo.completed = false;
+        }
+      }
+      if(user.completed == 3){
+          modulo.completed = true
+      } 
+
+    }
+
+
+
   function CrearClases() {
     if (contador === 0) {
+      obtenerProgreso()
       todos.map((task) => {
         //Recorro el Array
         let temp = factoria
@@ -59,7 +116,7 @@ function Modulo() {
             contadorprogreso++;
           }
           return (
-            <Card3
+           <Card3
               key={task.id}
               id={task.getId()}
               titulo={task.getTitulo()}
@@ -73,11 +130,14 @@ function Modulo() {
           <div className="mt-5">
             <h1 className="fw-bold fs-3 text-center">
               {"PROGRESO ACTUAL: " +
-                Math.round((contadorprogreso / Objetos.length) * 100) + //Calculo el porcentaje
+                user.progress +
+                //Calculo el porcentaje
                 "%"}
             </h1>
             <div className="text-center form-text mb-5">
               * Se actualizará el progreso cuando completes un módulo.
+            </div>
+            <div>
             </div>
           </div>
         </div>
