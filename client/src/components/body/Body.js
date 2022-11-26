@@ -15,6 +15,7 @@ import Cuestionario from './modulos/Cuestionario';
 import Home from './home/Home';
 import Test from './test/Test';
 import About from './about/About'
+import ProfeVista from './profe/ProfeVista';
 
 function Body() {
   const auth = useSelector(state => state.auth)
@@ -32,7 +33,7 @@ function Body() {
         <Route path='/user/activate/:activation_token' element={<ActivationEmail />} />
         <Route path='/profile' element={isLogged ? <Profile /> : <Missing />} />
         <Route path='/edit_user/:id' element={isAdmin ? <EditUser /> : <Missing />} />
-        <Route path='/' element={isLogged ? <Modulo /> : <Home />} exact />
+        <Route path='/' element={isLogged ? isAdmin ? <ProfeVista/> : <Modulo /> : <Home />} exact />
         <Route path='/test' element={isLogged ? <Test /> : <Missing />} />
         <Route path='/modulo/:id' element={isLogged ? <Cuestionario /> : <Missing />} />
       </Routes>

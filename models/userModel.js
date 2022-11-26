@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
 
   completed: {
     type: Number,
-    default: 1
+    default: 0
   },
 
   progress: {

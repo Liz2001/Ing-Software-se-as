@@ -1,4 +1,6 @@
+const { debug } = require('console')
 const Module = require('../models/moduleModel')
+const Users = require('../models/userModel')
 
 const moduleCtrl = {
   register: async (req, res) => {
@@ -24,7 +26,8 @@ const moduleCtrl = {
 updateStatus: async (req, res) => {
   try {
     const { id,avaliable,completed } = req.params
-    await Module.findOneAndUpdate({ id: id }, {
+    console.log(completed,avaliable,id)
+    await Users.findOneAndUpdate({ _id: id }, {
       avaliable: avaliable, completed:completed
     })
     res.json({ msg: 'Información actualizada correctamente.' })
@@ -33,6 +36,19 @@ updateStatus: async (req, res) => {
     return res.status(500).json({ msg: err.message })
   }
 },
+UpdateProgreso: async (req,res) =>{
+  try {
+      const { id, progress} = req.params
+      console.log("Entre+" + progress)
+      await Users.findOneAndUpdate({ _id: id }, {
+          progress: progress
+      })
+      res.json({ msg: 'Información actualizada correctamente.' })
+  } catch (err) {
+      return res.status(500).json({ msg: err.message })
+  }
+}
+
 }
 
 module.exports = moduleCtrl
