@@ -167,6 +167,10 @@ function Profile() {
             <div className='d-grid gap-2 col-4 mx-auto mb-3'>
               <button className='btn btn-dark' disabled={loading} onClick={handleUpdate}>Actualizar datos</button>
             </div>
+            <div>
+              {user.progress + '%' //edita aca papa
+              }
+            </div>
           </div>
           <div className='col-right'>
             <h2 className='border-bottom pb-3'>{isAdmin ? 'Alumnos' : 'Estadísticas'}</h2>
