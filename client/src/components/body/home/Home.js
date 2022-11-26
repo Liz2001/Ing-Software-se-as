@@ -61,6 +61,16 @@ function Home() {
               Pantallazo de prueba Si puedes ver esto, significa que todo
               funciona bien :) Luego le pongo una interfaz más chvr.
             </div>
+            {/*
+              <button className="btn btn-primary">
+                <Link
+                  to="/exito"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <FontAwesomeIcon icon="fa-solid fa-clipboard" /> exito prueba
+                </Link>
+              </button>
+            */}
           </div>
         </div>
       </div>

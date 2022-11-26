@@ -16,6 +16,7 @@ import Home from './home/Home';
 import Test from './test/Test';
 import About from './about/About'
 import ProfeVista from './profe/ProfeVista';
+import Exito from '../body/donations/confirmacion/Exito'
 
 function Body() {
   const auth = useSelector(state => state.auth)
@@ -25,6 +26,7 @@ function Body() {
     <section>
       <Routes>
         <Route path='/donations' element={<Donations />} />
+        <Route path='/exito' element={<Exito />} />
         <Route path='/about' element={<About />} />
         <Route path='/login' element={isLogged ? <Missing /> : <Login />} />
         <Route path='/register' element={isLogged ? <Missing /> : <Register />} />
